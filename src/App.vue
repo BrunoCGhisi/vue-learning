@@ -5,6 +5,7 @@ const contador = ref(0);
 
 function plusOne(){
   contador.value++;
+
 }
 </script>
 
