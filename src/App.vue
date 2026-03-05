@@ -1,27 +1,27 @@
 <script setup>
 import { ref } from 'vue';
+import { ButtonCounter } from '@/components/ButtonCounter.vue'
 
-const contador = ref(0);
+const counter = ref(0);
 
-function plusOne(){
-  contador.value++;
-}
+function plusOne(){ counter.value++; }
+function removeOne(){ counter.value++; }
+function resetCounter(){ counter.value = 0; }
+
 </script>
 
 <template>
 
   <body>
     <div class="header">
-      <h1>Hello World!</h1>
+      <h1>Controller Buttons</h1>
+      <p>The actual mountant of clicks is: <strong>{{counter}}</strong></p>
     </div>
 
     <div class="container">
-      <div class="content">
-        <p>The actual mountant of clicks is: <strong>{{contador}}</strong></p>
-      </div>
-      <div>
-        <button @click="plusOne">+++</button>
-      </div>
+      <button text="Plus" color="#00ffff" @click="plusOne"></button>
+      <button text="Plus" color="#ff00ff" @click="removeOne"></button>
+      <button text="Plus" color="#ffff00" @click="resetCounter"></button>
     </div>
 
   </body>
