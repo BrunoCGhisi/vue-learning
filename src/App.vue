@@ -2,6 +2,8 @@
 import { ref } from 'vue';
 import ButtonCounter from '@/components/ButtonCounter.vue'
 import ButtonDuplicater from '@/components/ButtonCounter.vue'
+import DividerLine from '@/components/DividerLine.vue'
+import UserProfile from '@/library/UserProfile.vue'
 
 
 const counter = ref(0);
@@ -34,31 +36,23 @@ function duplicate(){
       <p>The actual mountant of clicks is: <strong> {{duplicated}} </strong></p>
     </div>
 
-    <div class="container">
+    <div class="container-row">
       <ButtonCounter text="Plus" color="#00cccc" @clicked="plusOne" />
       <ButtonCounter text="Minus" color="#aa00aa" @clicked="removeOne" />
       <ButtonCounter text="Reset" color="#ffcc00" @clicked="resetCounter" />
     </div>
-    <div class="container">
+    <div class="container-row">
       <ButtonDuplicater text="Plus" color="#000" @clicked="duplicate" />
       <ButtonDuplicater text="Reset" color="#aaa" @clicked="resetDuplicated" />
     </div>
+
+    <DividerLine />
+    <UserProfile />
   </div>
+
 
 </template>
 
 <style>
-
-.main-container{
-  padding: 00px 20px ;
-}
-
-.container {
-  display: flex;
-  flex-direction: row;
-  background: #1f1f1f;
-  gap: 20px;
-  justify-content: center;
-}
 
 </style>
