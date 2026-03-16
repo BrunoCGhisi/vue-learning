@@ -1,5 +1,4 @@
 <script setup>
-
 defineProps({
   user: Object
 })
@@ -12,9 +11,14 @@ defineProps({
     <div class="container-title">
       Titulo
     </div>
-    <div class="container">
-      aaaa
+    <div class="container" :style="{color: user.isOlder ? 'red' : 'green'}">
+      {{user.name}}
+      <span v-if="user.isOn" class="badge online">Online</span>
     </div>
+    <div class="container">
+
+    </div>
+
   </div>
 </template>
 
