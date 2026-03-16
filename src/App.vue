@@ -17,9 +17,10 @@ function removeOne(){
   }
 }
 function resetCounter(){ counter.value = 0; }
+function resetDuplicated(){ duplicated.value = 0; }
 
 function duplicate(){
-  duplicated.value = counter.value *2;
+  duplicated.value = duplicated.value+(counter.value *2);
 }
 
 </script>
@@ -29,17 +30,18 @@ function duplicate(){
   <div class="main-container">
     <div class="header">
       <h1>Controller Buttons</h1>
-      <p>The actual mountant of clicks is: <strong>{{counter}}</strong></p>
-      <p>The actual mountant of clicks is: <strong>{{duplicated}}</strong></p>
+      <p>The actual mountant of clicks is: <strong> {{counter}} </strong></p>
+      <p>The actual mountant of clicks is: <strong> {{duplicated}} </strong></p>
     </div>
 
     <div class="container">
-      <ButtonCounter text="Plus" color="#00ffff" @clicked="plusOne" />
-      <ButtonCounter text="Minus" color="#ff00ff" @clicked="removeOne" />
+      <ButtonCounter text="Plus" color="#00cccc" @clicked="plusOne" />
+      <ButtonCounter text="Minus" color="#aa00aa" @clicked="removeOne" />
       <ButtonCounter text="Reset" color="#ffcc00" @clicked="resetCounter" />
     </div>
     <div class="container">
       <ButtonDuplicater text="Plus" color="#000" @clicked="duplicate" />
+      <ButtonDuplicater text="Reset" color="#aaa" @clicked="resetDuplicated" />
     </div>
   </div>
 
@@ -48,15 +50,8 @@ function duplicate(){
 
 <style>
 
-body{
-  margin: 0;
-  padding: 0;
-  background: #f4f4bd;
-  box-sizing: border-box
-}
-
 .main-container{
-  padding: 20px 20px ;
+  padding: 00px 20px ;
 }
 
 .container {
