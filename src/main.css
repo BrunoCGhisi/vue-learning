@@ -1,6 +1,12 @@
 body{
   margin: 0;
   padding: 0;
-  background: #f4f4bd;
-  box-sizing: border-box
+  background: #0f0f0f;
+  box-sizing: border-box;
+  color: #e0e0e0;
+}
+
+::selection {
+  background-color: #ffde00; /* Cor de fundo (ex: amarelo) */
+  color: #333;              /* Cor do texto (ex: cinza escuro) */
 }

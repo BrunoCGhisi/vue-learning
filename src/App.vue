@@ -45,7 +45,6 @@ function duplicate(){
     </div>
   </div>
 
-
 </template>
 
 <style>
@@ -57,7 +56,7 @@ function duplicate(){
 .container {
   display: flex;
   flex-direction: row;
-  background: #ecccd9;
+  background: #1f1f1f;
   gap: 20px;
   justify-content: center;
 }
