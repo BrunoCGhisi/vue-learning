@@ -1,0 +1,49 @@
+body{
+  margin: 0;
+  padding: 0;
+  background: #0f0f0f;
+  box-sizing: border-box;
+  color: #e0e0e0;
+  font-family: arial, Roboto, sans-serif;
+}
+
+::selection {
+  background-color: #ffde00; /* Cor de fundo (ex: amarelo) */
+  color: #333;              /* Cor do texto (ex: cinza escuro) */
+}
+
+.container-row {
+  display: flex;
+  flex-direction: row;
+  background: #1f1f1f;
+  gap: 20px;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.container-collum {
+  display: flex;
+  flex-direction: column;
+  background: #1f1f1f;
+  gap: 10px;
+  justify-content: center;
+  border-radius: 5px;
+  padding: 2px;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.main-container{
+  padding: 00px 20px ;
+
+}
+
+.container-title {
+  font-weight: bold;
+  font-size: x-large;
+}
