@@ -1,5 +1,6 @@
 export class User {
-  constructor(name, age, skills=[], isOn = false) {
+  constructor(id, name, age, skills=[], isOn = false) {
+    this.id = id;
     this.name = name;
     this.age = age;
     this.skills = skills;
@@ -19,3 +20,5 @@ export class User {
     }
   }
 }
+
+
