@@ -19,6 +19,7 @@ defineProps({
 
       <button @click="user.changeStatus()"> Alter Status</button>
 
+
     </div>
   </div>
 </template>
