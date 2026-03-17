@@ -35,6 +35,8 @@ defineProps({
   border-radius: 10px;
   flex-direction: column;
   min-width: 21%;
+  min-height: 35vh;
+  max-height: 35vh;
   padding: 15px;
 }
 

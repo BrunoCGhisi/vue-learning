@@ -1,36 +1,101 @@
 <script setup>
+import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
+
 defineProps({
   user: Object,
 })
 </script>
 
 <template>
-    <div class="container-title">{{ user.name }}</div>
-      <span :style="{ color: user.isOlder() ? 'red' : 'green' }">Age: {{ user.age }}</span>
-      <span v-if="user.isOn" class="text-true">ONline</span>
-      <span v-else class="text-false">OFFline</span>
-      <ul>
+    <div class="card-title-section">
+      <span class="card-title-large"> {{ user.name }} </span>
+      <span class="card-title-desc" :style="{ color: user.isOlder() ? 'red' : 'green' }"> {{ user.age }}</span>
+
+    </div>
+      <span v-if="user.isOn" class="text-true">Online</span>
+      <span v-else class="text-false">Offline</span>
+      <span class="card-list-title"> Skills: </span>
+      <ul class="card-list-text">
         <li v-for="(skill, index) in user.skills" :key="index">
           {{skill}}
         </li>
       </ul>
 
-      <button @click="user.changeStatus()"> Alter Status</button>
+    <ButtonContrast v-if="user.isOn" text="Logoff"  class="btn-bottom" @clicked="user.changeStatus()" />
+    <ButtonContrast v-else text="Login" class="btn-bottom"  @clicked="user.changeStatus()" />
+
 </template>
 
 <style scoped>
+
 .text-true {
   color: #ffde00;
+  font-style: italic;
+  padding: 5px 00px 00px 00px;
 }
 
 .text-false {
   color: #eff4b4;
+  font-style: italic;
+  padding: 5px 00px 00px 00px;
 }
 
+.card-title-section {
+  display: flex;
+  font-weight: bold;
+  justify-content: space-between;
+  align-items: center;
+}
 
+.card-title-large {
+  font-weight: bold;
+  font-size: x-large;
+}
 
-.card-itens {
+.card-title-desc {
+  font-style: italic;
+  font-size: medium;
+}
 
+.card-list-title {
+  padding: 15px 00px 00px 00px;
+  color: #ffde00;
+  font-weight: bold;
+  font-size: large;
+}
+
+.card-list-text {
+  position: absoulute;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+li::marker {
+  color: #ffde00;         /* Styles only the marker in red */
+}
+
+.card-list-text::-webkit-scrollbar {
+  width: 4px;
+  margin-left: 30px;
+  padding-left: 30px;
+}
+
+.card-list-text::-webkit-scrollbar-track { /* Fundo do Scroll */
+  background: #ffde00;
+  border-radius: 10px;
+}
+
+.card-list-text::-webkit-scrollbar-thumb { /* Fundo do Scroll */
+  background: #ffde00;
+
+}
+
+.card-list-text::-webkit-scrollbar-thumb:hover {
+  background: #edc800;
+}
+
+.btn-bottom {
+  margin-top: auto;
 }
 
 </style>
