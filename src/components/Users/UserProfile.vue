@@ -7,30 +7,30 @@ defineProps({
 </script>
 
 <template>
-    <div class="card-title-section">
-      <span class="card-title-large"> {{ user.name }} </span>
-      <span class="card-title-desc"
-            :style="{ color: user.isOlder() ? 'red' : 'green' }">
-        {{ user.age }}
-      </span>
+  <div class="card-title-section">
+    <span class="card-title-large"> {{ user.name }} </span>
+    <span class="card-title-desc" :style="{ color: user.isOlder() ? 'red' : 'green' }">
+      {{ user.age }}
+    </span>
+  </div>
+  <span v-if="user.isOn" class="text-true">Online</span>
+  <span v-else class="text-false">Offline</span>
+  <span class="card-list-title"> Skills: </span>
+  <ul class="card-list-text">
+    <li v-for="(skill, index) in user.skills" :key="index">
+      {{ skill }}
+    </li>
+  </ul>
+  <div class="card-buttons">
+    <ButtonContrast v-if="user.isOn" text="Logoff" @clicked="user.changeStatus()" />
+    <ButtonContrast v-else text="Login" @clicked="user.changeStatus()" />
 
-    </div>
-      <span v-if="user.isOn" class="text-true">Online</span>
-      <span v-else class="text-false">Offline</span>
-      <span class="card-list-title"> Skills: </span>
-      <ul class="card-list-text">
-        <li v-for="(skill, index) in user.skills" :key="index">
-          {{skill}}
-        </li>
-      </ul>
-
-    <ButtonContrast v-if="user.isOn" text="Logoff"  class="btn-bottom" @clicked="user.changeStatus()" />
-    <ButtonContrast v-else text="Login" class="btn-bottom"  @clicked="user.changeStatus()" />
-
+    <ButtonContrast text="Editar" />
+    <ButtonContrast text="Deletar" />
+  </div>
 </template>
 
 <style scoped>
-
 .text-true {
   color: #ffde00;
   font-style: italic;
@@ -89,15 +89,16 @@ li::marker {
 
 .card-list-text::-webkit-scrollbar-thumb {
   background: #ffde00;
-
 }
 
 .card-list-text::-webkit-scrollbar-thumb:hover {
   background: #edc800;
 }
 
-.btn-bottom {
+.card-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   margin-top: auto;
 }
-
 </style>

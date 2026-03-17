@@ -1,28 +1,21 @@
 <script setup>
-
 defineProps(['text', 'color'])
 
 const emit = defineEmits(['clicked'])
-
 </script>
 
 <template>
-  <button
-    :style="{ backgroundColor: color }"
-    @click="emit('clicked')"
-  >
+  <button :style="{ backgroundColor: color }" @click="emit('clicked')">
     {{ text }}
   </button>
-  <div>
-    aa<div> </div>
-  </div>
 </template>
 
 <style scoped>
-button{
+button {
   padding: 10px 20px;
   color: white;
-  border: none;border-radius: 8px;
+  border: none;
+  border-radius: 8px;
   cursor: pointer;
   margin: 5px;
   font-weight: bold;

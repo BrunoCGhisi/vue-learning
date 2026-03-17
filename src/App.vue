@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref } from 'vue'
 import ButtonCounter from '@/components/Counters/ButtonCounter.vue'
 import ButtonDuplicater from '@/components/Counters/ButtonCounter.vue'
 import DividerLine from '@/components/Commun/DividerLine.vue'
@@ -15,38 +15,50 @@ const users = ref([
   new User(1, 'Zezinho', 25, ['Vue', 'Node'], true),
   new User(2, 'Luizinho', 15, ['HTML', 'CSS'], false),
   new User(1, 'Zezinho', 25, ['Vue', 'Node'], true),
-  new User(2, 'Luizinho', 15, ['HTML', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS'], false)
-
+  new User(
+    2,
+    'Luizinho',
+    15,
+    ['HTML', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS', 'CSS'],
+    false,
+  ),
 ])
 
-const counter = ref(0);
+const counter = ref(0)
 const duplicated = ref(0)
 
-function plusOne(){ counter.value++; }
-function removeOne(){
-  if (counter.value<1) {
-    alert("The counter cannot excess below 0!")
-  }
-  else {
-    counter.value--;
+function plusOne() {
+  counter.value++
+}
+function removeOne() {
+  if (counter.value < 1) {
+    alert('The counter cannot excess below 0!')
+  } else {
+    counter.value--
   }
 }
-function resetCounter(){ counter.value = 0; }
-function resetDuplicated(){ duplicated.value = 0; }
-
-function duplicate(){
-  duplicated.value = duplicated.value+(counter.value *2);
+function resetCounter() {
+  counter.value = 0
+}
+function resetDuplicated() {
+  duplicated.value = 0
 }
 
+function duplicate() {
+  duplicated.value = duplicated.value + counter.value * 2
+}
 </script>
 
 <template>
-
   <div class="main-container">
     <div class="header">
       <h1>Controller Buttons</h1>
-      <p>The actual mountant of clicks is: <strong> {{counter}} </strong></p>
-      <p>The actual mountant of clicks is: <strong> {{duplicated}} </strong></p>
+      <p>
+        The actual mountant of clicks is: <strong> {{ counter }} </strong>
+      </p>
+      <p>
+        The actual mountant of clicks is: <strong> {{ duplicated }} </strong>
+      </p>
     </div>
 
     <div class="container-row">
@@ -65,10 +77,6 @@ function duplicate(){
 
     <DividerLine />
   </div>
-
-
 </template>
 
-<style>
-
-</style>
+<style></style>

@@ -1,16 +1,18 @@
 <script setup>
-
-import UserProfile from "@/components/Users/UserProfile.vue";
+import UserProfile from '@/components/Users/UserProfile.vue'
+import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 
 defineProps({
-  userList: [],
+  userList: Array,
   user: Object,
 })
-
 </script>
 
 <template>
-  <h1>Controller Users</h1>
+  <div class="title-container">
+    <h1>Controller Users</h1>
+    <button-contrast text="Register" />
+  </div>
   <div class="container-card">
     <div class="card" v-for="(user, index) in userList" :key="index">
       <user-profile :user="user" />
@@ -19,6 +21,11 @@ defineProps({
 </template>
 
 <style scoped>
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
 .container-card {
   display: flex;
@@ -39,5 +46,4 @@ defineProps({
   max-height: 35vh;
   padding: 15px;
 }
-
 </style>
