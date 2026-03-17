@@ -9,7 +9,10 @@ defineProps({
 <template>
     <div class="card-title-section">
       <span class="card-title-large"> {{ user.name }} </span>
-      <span class="card-title-desc" :style="{ color: user.isOlder() ? 'red' : 'green' }"> {{ user.age }}</span>
+      <span class="card-title-desc"
+            :style="{ color: user.isOlder() ? 'red' : 'green' }">
+        {{ user.age }}
+      </span>
 
     </div>
       <span v-if="user.isOn" class="text-true">Online</span>
@@ -65,13 +68,12 @@ defineProps({
 }
 
 .card-list-text {
-  position: absoulute;
   max-height: 100px;
   overflow-y: auto;
 }
 
 li::marker {
-  color: #ffde00;         /* Styles only the marker in red */
+  color: #ffde00;
 }
 
 .card-list-text::-webkit-scrollbar {
@@ -80,12 +82,12 @@ li::marker {
   padding-left: 30px;
 }
 
-.card-list-text::-webkit-scrollbar-track { /* Fundo do Scroll */
+.card-list-text::-webkit-scrollbar-track {
   background: #ffde00;
   border-radius: 10px;
 }
 
-.card-list-text::-webkit-scrollbar-thumb { /* Fundo do Scroll */
+.card-list-text::-webkit-scrollbar-thumb {
   background: #ffde00;
 
 }

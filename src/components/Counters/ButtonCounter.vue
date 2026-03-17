@@ -13,14 +13,16 @@ const emit = defineEmits(['clicked'])
   >
     {{ text }}
   </button>
+  <div>
+    aa<div> </div>
+  </div>
 </template>
 
 <style scoped>
 button{
   padding: 10px 20px;
   color: white;
-  border: none;
-  border-radius: 8px;
+  border: none;border-radius: 8px;
   cursor: pointer;
   margin: 5px;
   font-weight: bold;
