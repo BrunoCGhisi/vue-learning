@@ -3,11 +3,21 @@ import { ref } from 'vue';
 import ButtonCounter from '@/components/ButtonCounter.vue'
 import ButtonDuplicater from '@/components/ButtonCounter.vue'
 import DividerLine from '@/components/DividerLine.vue'
-import UserProfile from '@/components/UserProfile.vue'
 
 import { User } from '@/models/User'
-const dev1 = ref(new User(1, 'Zezinho', 25, ['Vue', 'Node'], true))
-const dev2 = ref(new User(2, 'Luizinho', 15, ['HTML', 'CSS'], false))
+import UserContainer from '@/components/Users/UserContainer.vue'
+
+const users = ref([
+  new User(1, 'Zezinho', 25, ['Vue', 'Node'], true),
+  new User(2, 'Luizinho', 15, ['HTML', 'CSS'], false),
+  new User(1, 'Zezinho', 25, ['Vue', 'Node'], true),
+  new User(2, 'Luizinho', 15, ['HTML', 'CSS'], false),
+  new User(1, 'Zezinho', 25, ['Vue', 'Node'], true),
+  new User(2, 'Luizinho', 15, ['HTML', 'CSS'], false),
+  new User(1, 'Zezinho', 25, ['Vue', 'Node'], true),
+  new User(2, 'Luizinho', 15, ['HTML', 'CSS'], false)
+
+])
 
 const counter = ref(0);
 const duplicated = ref(0)
@@ -27,8 +37,6 @@ function resetDuplicated(){ duplicated.value = 0; }
 function duplicate(){
   duplicated.value = duplicated.value+(counter.value *2);
 }
-
-
 
 </script>
 
@@ -53,10 +61,7 @@ function duplicate(){
 
     <DividerLine />
 
-    <UserProfile :user="dev1"/>
-    <DividerLine />
-    <UserProfile :user="dev2"/>
-
+    <user-container :userList="users" />
   </div>
 
 

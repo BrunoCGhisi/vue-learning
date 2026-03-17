@@ -5,6 +5,12 @@ body{
   box-sizing: border-box;
   color: #e0e0e0;
   font-family: arial, Roboto, sans-serif;
+  font-size: 2.5vh;
+}
+
+h1 {
+  font-size: 4vh;
+  margin: 0 0 2vh 0;
 }
 
 ::selection {
