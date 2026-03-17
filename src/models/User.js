@@ -15,6 +15,7 @@ export class User {
     if (this.age < 18){
       return true;
     }
+
     else{
       return false;
     }
