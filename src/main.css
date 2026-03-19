@@ -14,8 +14,8 @@ h1 {
 }
 
 ::selection {
-  background-color: #ffde00; /* Cor de fundo (ex: amarelo) */
-  color: #333;              /* Cor do texto (ex: cinza escuro) */
+  background-color: #ffde00;
+  color: #333;
 }
 
 .container-row {

@@ -4,6 +4,7 @@ import { ref } from 'vue'
 import UserProfile from '@/components/Users/UserProfile.vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import ModalForm from '@/components/Commun/ModalForm.vue'
+import FormAddUser from '@/components/Users/FormAddUser.vue'
 
 defineProps({
   userList: Array,
@@ -18,8 +19,7 @@ const isModalOpen = ref(false)
     <h1>Controller Users</h1>
     <button-contrast text="Register" @clicked="isModalOpen = true" />
     <ModalForm :show="isModalOpen" title="Configurações de Usuário" @close="isModalOpen = false">
-      <p>Aqui você pode colocar qualquer formulário ou texto!</p>
-      <input type="text" placeholder="Nome do dev..." />
+      <FormAddUser />
     </ModalForm>
   </div>
   <div class="container-card">

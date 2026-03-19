@@ -64,9 +64,6 @@ const emit = defineEmits(['close'])
   cursor: pointer;
 }
 
-/* --- Transições (O "etc" da sua pergunta) --- */
-
-/* Estado inicial e final (Invisível) */
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
@@ -77,7 +74,6 @@ const emit = defineEmits(['close'])
   transform: scale(0.9);
 }
 
-/* Estado ativo (Tempo da animação) */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.3s ease;
