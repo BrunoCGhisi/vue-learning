@@ -1,17 +1,26 @@
 <script setup>
+import { ref } from 'vue'
+
 import UserProfile from '@/components/Users/UserProfile.vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
+import ModalForm from '@/components/Commun/ModalForm.vue'
 
 defineProps({
   userList: Array,
   user: Object,
 })
+
+const isModalOpen = ref(false)
 </script>
 
 <template>
   <div class="title-container">
     <h1>Controller Users</h1>
-    <button-contrast text="Register" />
+    <button-contrast text="Register" @clicked="isModalOpen = true" />
+    <ModalForm :show="isModalOpen" title="Configurações de Usuário" @close="isModalOpen = false">
+      <p>Aqui você pode colocar qualquer formulário ou texto!</p>
+      <input type="text" placeholder="Nome do dev..." />
+    </ModalForm>
   </div>
   <div class="container-card">
     <div class="card" v-for="(user, index) in userList" :key="index">

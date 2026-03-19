@@ -13,6 +13,7 @@ defineProps({
       {{ user.age }}
     </span>
   </div>
+
   <span v-if="user.isOn" class="text-true">Online</span>
   <span v-else class="text-false">Offline</span>
   <span class="card-list-title"> Skills: </span>
@@ -100,5 +101,6 @@ li::marker {
   flex-direction: row;
   justify-content: space-around;
   margin-top: auto;
+  gap: 00px 10px;
 }
 </style>
