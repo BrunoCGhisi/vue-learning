@@ -35,7 +35,7 @@ function handleUserAdd() {
     <input v-model="name" type="text" placeholder="User name" />
     <input v-model="age" type="text" placeholder="User age" />
     <input v-model="skills" type="text" placeholder="User skills" />
-    <ButtonContrast text="Register" @click="handleUserAdd" />
+    <ButtonContrast text="Register" @clicked="handleUserAdd" />
   </div>
   <p v-if="name">
     Preview: Creating <strong>{{ name }}</strong>

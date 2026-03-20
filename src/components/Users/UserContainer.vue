@@ -11,7 +11,13 @@ defineProps({
   user: Object,
 })
 
+const emit = defineEmits(['add-user-to-app']) // Criamos uma ponte para o App.vue
 const isModalOpen = ref(false)
+
+function forwardUser(userData) {
+  emit('add-user-to-app', userData)
+  isModalOpen.value = false // Fecha o modal após adicionar
+}
 </script>
 
 <template>
@@ -19,7 +25,7 @@ const isModalOpen = ref(false)
     <h1>Controller Users</h1>
     <button-contrast text="Register" @clicked="isModalOpen = true" />
     <ModalForm :show="isModalOpen" title="Configurações de Usuário" @close="isModalOpen = false">
-      <FormAddUser />
+      <FormAddUser @user-add="forwardUser" />
     </ModalForm>
   </div>
   <div class="container-card">
@@ -51,6 +57,7 @@ const isModalOpen = ref(false)
   border-radius: 10px;
   flex-direction: column;
   min-width: 21%;
+  max-width: 21%;
   min-height: 35vh;
   max-height: 35vh;
   padding: 15px;
