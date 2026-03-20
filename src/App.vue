@@ -39,6 +39,10 @@ function addNewUser(data) {
   const newUser = new User(newId, data.name, data.age, data.skills, true)
   users.value.push(newUser)
 }
+
+function deleteUser(id) {
+  users.value = users.value.filter((u) => u.id !== id)
+}
 </script>
 
 <template>
@@ -65,7 +69,11 @@ function addNewUser(data) {
 
     <DividerLine />
 
-    <user-container :userList="users" @add-user-to-app="addNewUser" />
+    <user-container
+      :userList="users"
+      @add-user-to-app="addNewUser"
+      @delete-user-to-app="deleteUser"
+    />
 
     <DividerLine />
   </div>

@@ -1,9 +1,15 @@
 <script setup>
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 
-defineProps({
+const props = defineProps({
   user: Object,
 })
+
+const emit = defineEmits(['delete-user'])
+
+function deleteUser() {
+  emit('delete-user', props.user.id)
+}
 </script>
 
 <template>
@@ -27,7 +33,7 @@ defineProps({
     <ButtonContrast v-else text="Login" @clicked="user.changeStatus()" />
 
     <ButtonContrast text="Editar" />
-    <ButtonContrast text="Deletar" />
+    <ButtonContrast text="Deletar" @clicked="deleteUser" />
   </div>
 </template>
 

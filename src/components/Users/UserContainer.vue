@@ -4,19 +4,23 @@ import { ref } from 'vue'
 import UserProfile from '@/components/Users/UserProfile.vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import ModalForm from '@/components/Commun/ModalForm.vue'
-import FormAddUser from '@/components/Users/FormAddUser.vue'
+import FormAddUser from '@/components/Users/cardButtons/FormAddUser.vue'
 
 defineProps({
   userList: Array,
   user: Object,
 })
 
-const emit = defineEmits(['add-user-to-app']) // Criamos uma ponte para o App.vue
+const emit = defineEmits(['add-user-to-app', 'delete-user'])
 const isModalOpen = ref(false)
 
 function forwardUser(userData) {
   emit('add-user-to-app', userData)
-  isModalOpen.value = false // Fecha o modal após adicionar
+  isModalOpen.value = false
+}
+
+function forwardDeleteUser(id) {
+  emit('delete-user-to-app', id)
 }
 </script>
 
@@ -30,7 +34,7 @@ function forwardUser(userData) {
   </div>
   <div class="container-card">
     <div class="card" v-for="(user, index) in userList" :key="index">
-      <user-profile :user="user" />
+      <user-profile :user="user" @delete-user="forwardDeleteUser"" />
     </div>
   </div>
 </template>
