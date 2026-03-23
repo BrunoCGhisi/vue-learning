@@ -41,6 +41,16 @@ function addNewUser(data) {
   users.value.push(newUser)
 }
 
+function editUser(data) {
+  const index = users.value.findIndex((u) => u.id === data.id)
+
+  if (index !== -1) {
+    const updatedUser = new User(data.id, data.name, data.age, data.skills, users.value[index].isOn)
+
+    users.value[index] = updatedUser
+  }
+}
+
 function deleteUser(id) {
   users.value = users.value.filter((u) => u.id !== id)
 }
@@ -73,6 +83,7 @@ function deleteUser(id) {
     <user-container
       :userList="users"
       @add-user-to-app="addNewUser"
+      @edit-user-to-app="editUser"
       @delete-user-to-app="deleteUser"
     />
 

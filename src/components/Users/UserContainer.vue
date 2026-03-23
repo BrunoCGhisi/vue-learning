@@ -4,19 +4,23 @@ import { ref } from 'vue'
 import UserCard from '@/components/Users/UserCard.vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import ModalForm from '@/components/Commun/ModalForm.vue'
-import FormAddUser from '@/components/Users/cardButtons/FormAddUser.vue'
+import FormAddUser from '@/components/Users/cardButtons/Forms/FormAddUser.vue'
 
 defineProps({
   userList: Array,
   user: Object,
 })
 
-const emit = defineEmits(['add-user-to-app', 'delete-user'])
-const isModalOpen = ref(false)
+const emit = defineEmits(['add-user-to-app', 'edit-user-to-app', 'delete-user-to-app'])
+const addIsModalOpen = ref(false)
 
 function forwardUser(userData) {
   emit('add-user-to-app', userData)
-  isModalOpen.value = false
+  addIsModalOpen.value = false
+}
+
+function forwardEditUser(userData) {
+  emit('edit-user-to-app', userData)
 }
 
 function forwardDeleteUser(id) {
@@ -27,14 +31,22 @@ function forwardDeleteUser(id) {
 <template>
   <div class="title-container">
     <h1>Controller Users</h1>
-    <button-contrast text="Register" @clicked="isModalOpen = true" />
-    <ModalForm :show="isModalOpen" title="Configurações de Usuário" @close="isModalOpen = false">
+    <button-contrast text="Register" @clicked="addIsModalOpen = true" />
+    <ModalForm
+      :show="addIsModalOpen"
+      title="Configurações de Usuário"
+      @close="addIsModalOpen = false"
+    >
       <FormAddUser @user-add="forwardUser" />
     </ModalForm>
   </div>
   <div class="container-card">
     <div class="card" v-for="(user, index) in userList" :key="index">
-      <user-card :user="user" @delete-user="forwardDeleteUser"" />
+      <user-card
+        :user="user"
+        @edit-user-to-container="forwardEditUser"
+        @delete-user-to-container="forwardDeleteUser"
+      />
     </div>
   </div>
 </template>

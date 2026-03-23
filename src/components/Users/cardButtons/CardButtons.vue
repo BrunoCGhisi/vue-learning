@@ -1,0 +1,49 @@
+<script setup>
+import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
+import ModalForm from '@/components/Commun/ModalForm.vue'
+import { ref } from 'vue'
+import FormEditUser from '@/components/Users/cardButtons/Forms/FormEditUser.vue'
+
+const editIsModalOpen = ref(false)
+
+const props = defineProps({
+  user: Object,
+})
+
+const emit = defineEmits(['edit-user-to-card', 'delete-user'])
+
+function forwardEditUser(updatedData) {
+  emit('edit-user-to-card', updatedData)
+  editIsModalOpen.value = false
+}
+
+function deleteUser() {
+  emit('delete-user', props.user.id)
+}
+</script>
+
+<template>
+  <div class="card-buttons">
+    <ButtonContrast v-if="user.isOn" text="Logoff" @clicked="user.changeStatus()" />
+    <ButtonContrast v-else text="Login" @clicked="user.changeStatus()" />
+    <ButtonContrast text="Editar" @clicked="editIsModalOpen = true" />
+    <ModalForm
+      :show="editIsModalOpen"
+      title="Configurações de Usuário"
+      @close="editIsModalOpen = false"
+    >
+      <FormEditUser :user="user" @user-edit="forwardEditUser" />
+    </ModalForm>
+    <ButtonContrast text="Deletar" @clicked="deleteUser" />
+  </div>
+</template>
+
+<style scoped>
+.card-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: auto;
+  gap: 00px 10px;
+}
+</style>

@@ -1,14 +1,18 @@
 <script setup>
-import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
+import CardButtons from '@/components/Users/cardButtons/CardButtons.vue'
 
-const props = defineProps({
+defineProps({
   user: Object,
 })
 
-const emit = defineEmits(['delete-user'])
+const emit = defineEmits(['edit-user-to-container', 'delete-user-to-container'])
 
-function deleteUser() {
-  emit('delete-user', props.user.id)
+function forwardEditUser(userData) {
+  emit('edit-user-to-container', userData)
+}
+
+function forwardDeleteUser(id) {
+  emit('delete-user-to-container', id)
 }
 </script>
 
@@ -17,7 +21,6 @@ function deleteUser() {
     <span class="card-title-large"> {{ user.name }} </span>
     <span class="card-title-desc" :style="{ color: user.isOlder() ? 'red' : 'green' }">
       {{ user.age }}
-      {{ user.id }}
     </span>
   </div>
 
@@ -29,12 +32,7 @@ function deleteUser() {
       {{ skill }}
     </li>
   </ul>
-  <div class="card-buttons">
-    <ButtonContrast v-if="user.isOn" text="Logoff" @clicked="user.changeStatus()" />
-    <ButtonContrast v-else text="Login" @clicked="user.changeStatus()" />
-    <ButtonContrast text="Editar" />
-    <ButtonContrast text="Deletar" @clicked="deleteUser" />
-  </div>
+  <CardButtons :user="user" @edit-user-to-card="forwardEditUser" @delete-user="forwardDeleteUser" />
 </template>
 
 <style scoped>
@@ -100,13 +98,5 @@ li::marker {
 
 .card-list-text::-webkit-scrollbar-thumb:hover {
   background: #edc800;
-}
-
-.card-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: auto;
-  gap: 00px 10px;
 }
 </style>

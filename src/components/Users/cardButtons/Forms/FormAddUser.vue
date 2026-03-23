@@ -5,12 +5,14 @@ import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 const emit = defineEmits(['user-add'])
 
 const name = ref('')
-const age = ref(null)
+const age = ref('')
 const skills = ref('')
 
 function handleUserAdd() {
   if (!name.value || !age.value) {
     return alert('Please enter all fields')
+  } else if (age.value <= 1 || !Number.isInteger(age.value)) {
+    return alert('Please enter a valid number in the Age ')
   }
 
   const skillsArray = (skills.value || '')
@@ -33,7 +35,7 @@ function handleUserAdd() {
 <template>
   <div class="container-row">
     <input v-model="name" type="text" placeholder="User name" />
-    <input v-model="age" type="text" placeholder="User age" />
+    <input v-model="age" type="number" placeholder="User age" />
     <input v-model="skills" type="text" placeholder="User skills" />
     <ButtonContrast text="Register" @clicked="handleUserAdd" />
   </div>
