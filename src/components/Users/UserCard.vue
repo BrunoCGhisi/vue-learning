@@ -32,7 +32,6 @@ function deleteUser() {
   <div class="card-buttons">
     <ButtonContrast v-if="user.isOn" text="Logoff" @clicked="user.changeStatus()" />
     <ButtonContrast v-else text="Login" @clicked="user.changeStatus()" />
-
     <ButtonContrast text="Editar" />
     <ButtonContrast text="Deletar" @clicked="deleteUser" />
   </div>
