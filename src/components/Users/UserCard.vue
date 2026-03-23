@@ -17,6 +17,7 @@ function deleteUser() {
     <span class="card-title-large"> {{ user.name }} </span>
     <span class="card-title-desc" :style="{ color: user.isOlder() ? 'red' : 'green' }">
       {{ user.age }}
+      {{ user.id }}
     </span>
   </div>
 

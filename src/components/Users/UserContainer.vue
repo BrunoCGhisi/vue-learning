@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 
-import UserProfile from '@/components/Users/UserProfile.vue'
+import UserCard from '@/components/Users/UserCard.vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import ModalForm from '@/components/Commun/ModalForm.vue'
 import FormAddUser from '@/components/Users/cardButtons/FormAddUser.vue'
@@ -34,7 +34,7 @@ function forwardDeleteUser(id) {
   </div>
   <div class="container-card">
     <div class="card" v-for="(user, index) in userList" :key="index">
-      <user-profile :user="user" @delete-user="forwardDeleteUser"" />
+      <user-card :user="user" @delete-user="forwardDeleteUser"" />
     </div>
   </div>
 </template>

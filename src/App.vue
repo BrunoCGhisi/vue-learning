@@ -35,7 +35,8 @@ function duplicate() {
 }
 
 function addNewUser(data) {
-  const newId = users.value.length + 1
+  const lastUser = users.value.at(-1)
+  const newId = lastUser.id + 1
   const newUser = new User(newId, data.name, data.age, data.skills, true)
   users.value.push(newUser)
 }
