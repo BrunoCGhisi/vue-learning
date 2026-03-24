@@ -10,12 +10,7 @@ const props = defineProps({
   user: Object,
 })
 
-const emit = defineEmits(['edit-user-to-card', 'delete-user'])
-
-function forwardEditUser(updatedData) {
-  emit('edit-user-to-card', updatedData)
-  editIsModalOpen.value = false
-}
+const emit = defineEmits(['delete-user'])
 
 function deleteUser() {
   emit('delete-user', props.user.id)
@@ -35,7 +30,7 @@ const onlineButtonText = computed(() => {
       title="Configurações de Usuário"
       @close="editIsModalOpen = false"
     >
-      <FormEditUser :user="user" @user-edit="forwardEditUser" />
+      <FormEditUser :user="user" />
     </ModalForm>
     <ButtonContrast text="Deletar" @clicked="deleteUser" />
   </div>

@@ -6,11 +6,7 @@ const props = defineProps({
   user: Object,
 })
 
-const emit = defineEmits(['edit-user-to-container', 'delete-user-to-container'])
-
-function forwardEditUser(userData) {
-  emit('edit-user-to-container', userData)
-}
+const emit = defineEmits(['delete-user-to-container'])
 
 function forwardDeleteUser(id) {
   emit('delete-user-to-container', id)
@@ -45,7 +41,7 @@ const onlineText = computed(() => {
       {{ skill }}
     </li>
   </ul>
-  <CardButtons :user="user" @edit-user-to-card="forwardEditUser" @delete-user="forwardDeleteUser" />
+  <CardButtons :user="user" @delete-user="forwardDeleteUser" />
 </template>
 
 <style scoped>
