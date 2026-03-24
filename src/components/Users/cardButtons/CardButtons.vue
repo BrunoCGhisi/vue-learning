@@ -1,7 +1,7 @@
 <script setup>
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import ModalForm from '@/components/Commun/ModalForm.vue'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import FormEditUser from '@/components/Users/cardButtons/Forms/FormEditUser.vue'
 
 const editIsModalOpen = ref(false)
@@ -20,12 +20,15 @@ function forwardEditUser(updatedData) {
 function deleteUser() {
   emit('delete-user', props.user.id)
 }
+
+const onlineButtonText = computed(() => {
+  return props.user.isOn ? 'Logoff' : 'Login'
+})
 </script>
 
 <template>
   <div class="card-buttons">
-    <ButtonContrast v-if="user.isOn" text="Logoff" @clicked="user.changeStatus()" />
-    <ButtonContrast v-else text="Login" @clicked="user.changeStatus()" />
+    <ButtonContrast :text="onlineButtonText" @clicked="user.changeStatus()" />
     <ButtonContrast text="Editar" @clicked="editIsModalOpen = true" />
     <ModalForm
       :show="editIsModalOpen"

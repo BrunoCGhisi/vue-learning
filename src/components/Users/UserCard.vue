@@ -1,7 +1,8 @@
 <script setup>
 import CardButtons from '@/components/Users/cardButtons/CardButtons.vue'
+import { computed } from 'vue'
 
-defineProps({
+const props = defineProps({
   user: Object,
 })
 
@@ -14,18 +15,30 @@ function forwardEditUser(userData) {
 function forwardDeleteUser(id) {
   emit('delete-user-to-container', id)
 }
+
+const ageColor = computed(() => {
+  return props.user.isOlder() ? 'red' : 'green'
+})
+
+const onlineColor = computed(() => {
+  return props.user.isOn ? '#ffde00' : '#eff4b4'
+})
+
+const onlineText = computed(() => {
+  return props.user.isOn ? 'Online' : 'Offline'
+})
 </script>
 
 <template>
   <div class="card-title-section">
     <span class="card-title-large"> {{ user.name }} </span>
-    <span class="card-title-desc" :style="{ color: user.isOlder() ? 'red' : 'green' }">
+    <span class="card-title-desc" :style="{ color: ageColor }">
       {{ user.age }}
     </span>
   </div>
-
-  <span v-if="user.isOn" class="text-true">Online</span>
-  <span v-else class="text-false">Offline</span>
+  <span class="text-status" :style="{ color: onlineColor }">
+    {{ onlineText }}
+  </span>
   <span class="card-list-title"> Skills: </span>
   <ul class="card-list-text">
     <li v-for="(skill, index) in user.skills" :key="index">
@@ -36,14 +49,7 @@ function forwardDeleteUser(id) {
 </template>
 
 <style scoped>
-.text-true {
-  color: #ffde00;
-  font-style: italic;
-  padding: 5px 00px 00px 00px;
-}
-
-.text-false {
-  color: #eff4b4;
+.text-status {
   font-style: italic;
   padding: 5px 00px 00px 00px;
 }
