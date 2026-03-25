@@ -30,7 +30,7 @@ const onlineButtonText = computed(() => {
       title="Configurações de Usuário"
       @close="editIsModalOpen = false"
     >
-      <FormEditUser :user="user" />
+      <FormEditUser :user="user" @close="editIsModalOpen = false" />
     </ModalForm>
     <ButtonContrast text="Deletar" @clicked="deleteUser" />
   </div>
