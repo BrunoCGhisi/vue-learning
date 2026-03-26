@@ -1,8 +1,12 @@
 <script setup>
 import { ref } from 'vue'
+
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 
-const emit = defineEmits(['user-add'])
+import { useUsers } from '@/Composable/useUsers.js'
+const { addUser } = useUsers()
+
+const emit = defineEmits(['close'])
 
 const name = ref('')
 const age = ref('')
@@ -20,7 +24,7 @@ function handleUserAdd() {
     .map((s) => s.trim())
     .filter((s) => s !== '')
 
-  emit('user-add', {
+  addUser({
     name: name.value,
     age: Number(age.value),
     skills: skillsArray,
@@ -29,6 +33,8 @@ function handleUserAdd() {
   name.value = ''
   age.value = null
   skills.value = ''
+
+  emit('close')
 }
 </script>
 

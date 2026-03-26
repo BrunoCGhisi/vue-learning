@@ -6,8 +6,7 @@ import DividerLine from '@/components/Commun/DividerLine.vue'
 
 import UserContainer from '@/components/Users/UserContainer.vue'
 
-import { User } from '@/models/User'
-import { initialUsers } from '@/library/userData.js' // Importa a lista
+import { initialUsers } from '@/library/userData.js'
 
 const users = ref(initialUsers)
 
@@ -27,18 +26,13 @@ function removeOne() {
 function resetCounter() {
   counter.value = 0
 }
+
 function resetDuplicated() {
   duplicated.value = 0
 }
+
 function duplicate() {
   duplicated.value = duplicated.value + counter.value * 2
-}
-
-function addNewUser(data) {
-  const lastUser = users.value.at(-1)
-  const newId = lastUser.id + 1
-  const newUser = new User(newId, data.name, data.age, data.skills, true)
-  users.value.push(newUser)
 }
 
 function deleteUser(id) {
@@ -70,12 +64,7 @@ function deleteUser(id) {
 
     <DividerLine />
 
-    <user-container
-      :userList="users"
-      @add-user-to-app="addNewUser"
-      @edit-user-to-app="editUser"
-      @delete-user-to-app="deleteUser"
-    />
+    <user-container :userList="users" @delete-user-to-app="deleteUser" />
 
     <DividerLine />
   </div>

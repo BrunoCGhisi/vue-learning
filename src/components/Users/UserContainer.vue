@@ -11,17 +11,8 @@ defineProps({
   user: Object,
 })
 
-const emit = defineEmits(['add-user-to-app', 'delete-user-to-app'])
+const emit = defineEmits(['delete-user-to-app'])
 const addIsModalOpen = ref(false)
-
-function forwardUser(userData) {
-  emit('add-user-to-app', userData)
-  addIsModalOpen.value = false
-}
-
-function forwardEditUser(userData) {
-  emit('edit-user-to-app', userData)
-}
 
 function forwardDeleteUser(id) {
   emit('delete-user-to-app', id)
@@ -31,13 +22,13 @@ function forwardDeleteUser(id) {
 <template>
   <div class="title-container">
     <h1>Controller Users</h1>
-    <button-contrast text="Register" @clicked="addIsModalOpen = true" />
+    <ButtonContrast text="Register" @clicked="addIsModalOpen = true" />
     <ModalForm
       :show="addIsModalOpen"
       title="Configurações de Usuário"
       @close="addIsModalOpen = false"
     >
-      <FormAddUser @user-add="forwardUser" />
+      <FormAddUser @close="addIsModalOpen = false" />
     </ModalForm>
   </div>
   <div class="container-card">
