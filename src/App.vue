@@ -6,9 +6,9 @@ import DividerLine from '@/components/Commun/DividerLine.vue'
 
 import UserContainer from '@/components/Users/UserContainer.vue'
 
-import { initialUsers } from '@/library/userData.js'
+import { useUsers } from '@/Composable/useUsers'
 
-const users = ref(initialUsers)
+const { users } = useUsers()
 
 const counter = ref(0)
 const duplicated = ref(0)
@@ -16,6 +16,7 @@ const duplicated = ref(0)
 function plusOne() {
   counter.value++
 }
+
 function removeOne() {
   if (counter.value < 1) {
     alert('The counter cannot excess below 0!')
@@ -23,6 +24,7 @@ function removeOne() {
     counter.value--
   }
 }
+
 function resetCounter() {
   counter.value = 0
 }
@@ -33,10 +35,6 @@ function resetDuplicated() {
 
 function duplicate() {
   duplicated.value = duplicated.value + counter.value * 2
-}
-
-function deleteUser(id) {
-  users.value = users.value.filter((u) => u.id !== id)
 }
 </script>
 
@@ -64,7 +62,7 @@ function deleteUser(id) {
 
     <DividerLine />
 
-    <user-container :userList="users" @delete-user-to-app="deleteUser" />
+    <user-container :userList="users" />
 
     <DividerLine />
   </div>

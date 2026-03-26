@@ -11,12 +11,7 @@ defineProps({
   user: Object,
 })
 
-const emit = defineEmits(['delete-user-to-app'])
 const addIsModalOpen = ref(false)
-
-function forwardDeleteUser(id) {
-  emit('delete-user-to-app', id)
-}
 </script>
 
 <template>
@@ -33,7 +28,7 @@ function forwardDeleteUser(id) {
   </div>
   <div class="container-card">
     <div class="card" v-for="(user, index) in userList" :key="index">
-      <user-card :user="user" @delete-user-to-container="forwardDeleteUser" />
+      <user-card :user="user" />
     </div>
   </div>
 </template>

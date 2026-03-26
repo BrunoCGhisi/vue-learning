@@ -6,12 +6,6 @@ const props = defineProps({
   user: Object,
 })
 
-const emit = defineEmits(['delete-user-to-container'])
-
-function forwardDeleteUser(id) {
-  emit('delete-user-to-container', id)
-}
-
 const ageColor = computed(() => {
   return props.user.isOlder() ? 'red' : 'green'
 })
@@ -41,7 +35,7 @@ const onlineText = computed(() => {
       {{ skill }}
     </li>
   </ul>
-  <CardButtons :user="user" @delete-user="forwardDeleteUser" />
+  <CardButtons :user="user" />
 </template>
 
 <style scoped>

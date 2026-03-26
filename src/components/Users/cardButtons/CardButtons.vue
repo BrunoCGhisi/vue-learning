@@ -6,15 +6,16 @@ import FormEditUser from '@/components/Users/cardButtons/Forms/FormEditUser.vue'
 
 const editIsModalOpen = ref(false)
 
+import { useUsers } from '@/Composable/useUsers.js'
+const { deleteUser } = useUsers()
+
+function handleDelete() {
+  deleteUser(props.user.id)
+}
+
 const props = defineProps({
   user: Object,
 })
-
-const emit = defineEmits(['delete-user'])
-
-function deleteUser() {
-  emit('delete-user', props.user.id)
-}
 
 const onlineButtonText = computed(() => {
   return props.user.isOn ? 'Logoff' : 'Login'
@@ -32,7 +33,7 @@ const onlineButtonText = computed(() => {
     >
       <FormEditUser :user="user" @close="editIsModalOpen = false" />
     </ModalForm>
-    <ButtonContrast text="Deletar" @clicked="deleteUser" />
+    <ButtonContrast text="Deletar" @clicked="handleDelete" />
   </div>
 </template>
 
@@ -43,5 +44,6 @@ const onlineButtonText = computed(() => {
   justify-content: space-around;
   margin-top: auto;
   gap: 00px 10px;
+  min-width: 222px;
 }
 </style>
