@@ -7,7 +7,7 @@ const props = defineProps({
 })
 
 const ageColor = computed(() => {
-  return props.user.isOlder() ? 'red' : 'green'
+  return props.user.isOlder() ? 'green' : 'red'
 })
 
 const onlineColor = computed(() => {

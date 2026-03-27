@@ -8,7 +8,6 @@ import FormAddUser from '@/components/Users/cardButtons/Forms/FormAddUser.vue'
 
 defineProps({
   userList: Array,
-  user: Object,
 })
 
 const addIsModalOpen = ref(false)

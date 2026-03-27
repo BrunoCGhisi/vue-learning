@@ -12,7 +12,7 @@ export class User {
   }
 
   isOlder() {
-    if (this.age < 18) {
+    if (this.age > 18) {
       return true
     } else {
       return false
