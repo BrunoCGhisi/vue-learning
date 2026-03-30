@@ -12,12 +12,6 @@ export class User {
   }
 
   isOlder() {
-    if (this.age > 18) {
-      return true
-    } else {
-      return false
-    }
+    return this.age > 18
   }
-
-  addUser() {}
 }
