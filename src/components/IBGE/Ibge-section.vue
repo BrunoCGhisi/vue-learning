@@ -4,7 +4,7 @@ import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 
 import { ref } from 'vue'
 
-const props = defineProps(['title', 'placeholderTextfield', 'url'])
+const props = defineProps(['title', 'placeholderTextField-', 'url'])
 
 const searchTerm = ref('')
 const result = ref('')

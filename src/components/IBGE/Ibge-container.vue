@@ -10,19 +10,19 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
     <IbgeSection
       title="Name Frequency"
       topic-search="Nome"
-      placeholderTextfield="Name"
+      placeholderTextField="Name"
       url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
     />
     <IbgeSection
       title="Name Frequency"
       topic-search="Nome"
-      placeholderTextfield="Name"
+      placeholderTextField="Name"
       url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
     />
     <IbgeSection
       title="Name Frequency"
       topic-search="Nome"
-      placeholderTextfield="Name"
+      placeholderTextField="Name"
       url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
     />
   </div>
@@ -35,5 +35,6 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
   flex-wrap: wrap;
   justify-content: space-around;
   max-width: 100%;
+  gap: 20px;
 }
 </style>
