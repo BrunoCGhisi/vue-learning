@@ -2,25 +2,38 @@
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 
 import { ref } from 'vue'
-const props = defineProps(['title', 'topic-search', 'placeholderTextfield', 'url'])
+const props = defineProps(['title', 'placeholderTextfield', 'url'])
 
 const searchTerm = ref('')
+const result = ref('')
+const searched = ref(false)
 
 function template() {
-  console.log(`Buscando por: "${searchTerm.value}" na URL: ${props.url}`)
+  searched.value = false
+  console.log(`Buscando por: "${searchTerm.value}" na URL: ${props.url + searchTerm.value}" `)
+  return (searched.value = true)
 }
 </script>
 
 <template>
-  <div class="section-title">{{ title }}</div>
-  <div>
-    <input v-model="searchTerm" type="text" :placeholder="placeholderTextfield" />
-  </div>
-  <div>
+  <div class="ibge-section">
+    <div class="section-title">{{ title }}</div>
     <div>
-      <ButtonContrast text="Search" @clicked="template()" />
+      <input v-model="searchTerm" type="text" :placeholder="placeholderTextfield" />
     </div>
-    <div></div>
+    <div>
+      <div>
+        <ButtonContrast text="Search" @clicked="template()" />
+      </div>
+      <div>
+        <p v-if="searched">
+          Searching the {{ title }} of: <strong>{{ searchTerm }}</strong>
+        </p>
+        <p v-else-if="searchTerm">
+          Searching the {{ title }} of: <strong>{{ searchTerm }} has {{ result }} results</strong>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,5 +41,17 @@ function template() {
 .section-title {
   font-weight: bold;
   font-size: large;
+}
+
+.ibge-section {
+  min-width: 47%;
+  max-width: 47%;
+  min-height: 250px;
+  max-height: 250px;
+  background: #1f1f1f;
+  border-radius: 5px;
+  padding: 10px;
+  flex-direction: column;
+  gap: 10vh 10px;
 }
 </style>

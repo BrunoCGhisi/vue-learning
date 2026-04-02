@@ -1,11 +1,30 @@
-<script setup></script>
+<script setup>
+import IbgeSection from '@/components/IBGE/Ibge-section.vue'
+</script>
 
 <template>
   <div class="title-container">
     <h1>IBGE Data Search</h1>
   </div>
   <div class="ibge-container">
-    <div></div>
+    <IbgeSection
+      title="Name Frequency"
+      topic-search="Nome"
+      placeholderTextfield="Name"
+      url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
+    />
+    <IbgeSection
+      title="Name Frequency"
+      topic-search="Nome"
+      placeholderTextfield="Name"
+      url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
+    />
+    <IbgeSection
+      title="Name Frequency"
+      topic-search="Nome"
+      placeholderTextfield="Name"
+      url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
+    />
   </div>
 </template>
 
@@ -15,5 +34,6 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
+  max-width: 100%;
 }
 </style>
