@@ -6,5 +6,5 @@ export const initialUsers = [
   new User(3, 'Cypher', 32, ['Spy', 'Techs', 'Handsome', 'Information'], false),
   new User(4, 'DoorsMan', 999999, ['Serving', 'Not', 'Rule.'], true),
   new User(5, 'Viscuos', 1, ['Cube', 'Goo', 'Cube'], true),
-  new User(6, 'Dynamo', 1, ['Astronomia', 'Physics', 'Teaching'], true),
+  new User(6, 'Dynamo', 42, ['Astronomia', 'Physics', 'Teaching'], true),
 ]
