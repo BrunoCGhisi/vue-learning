@@ -1,17 +1,36 @@
 <script setup>
+import axios from 'axios'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 
 import { ref } from 'vue'
+
 const props = defineProps(['title', 'placeholderTextfield', 'url'])
 
 const searchTerm = ref('')
 const result = ref('')
 const searched = ref(false)
 
-function searchIbge() {
-  console.log(`Buscando por: "${searchTerm.value}" na URL: ${props.url + searchTerm.value}" `)
-  result.value = result.value + 1
-  return (searched.value = true)
+async function searchIbge() {
+  const newUrl = props.url + searchTerm.value
+  const response = await axios.get(newUrl)
+  try {
+    if (response.data.length > 0) {
+      const dataName = response.data[0]
+
+      const totalFrequency = dataName.res.reduce((acumulator, item) => {
+        return acumulator + item.frequencia
+      }, 0)
+
+      result.value = totalFrequency
+    } else {
+      result.value = 0
+    }
+  } catch (error) {
+    console.error('Error in searching for Names:', error)
+    alert('Does not working /: ')
+  } finally {
+    searched.value = true
+  }
 }
 </script>
 
@@ -32,7 +51,8 @@ function searchIbge() {
       </div>
       <div>
         <p v-if="searched">
-          Searching the {{ title }} of: <strong>{{ searchTerm }} has {{ result }} results</strong>
+          Searching the {{ title }} of: <strong>{{ searchTerm }}</strong> has
+          <strong>{{ result }} results</strong>
         </p>
         <p v-else-if="searchTerm">
           Searching the {{ title }} of: <strong>{{ searchTerm }}</strong>
