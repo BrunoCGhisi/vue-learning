@@ -1,82 +1,63 @@
 <script setup>
-import axios from 'axios'
-import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
-
 import { ref } from 'vue'
+import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
+import { useIbge } from '@/Composable/useIbge.js'
 
-const props = defineProps(['title', 'topicSearch', 'placeholderTextField', 'url'])
+// Padronize o nome aqui
+const props = defineProps(['title', 'placeholderTextField', 'url', 'type'])
 
 const searchTerm = ref('')
-const result = ref('')
-const searched = ref(false)
-
-async function searchIbge() {
-  const newUrl = props.url + searchTerm.value
-  const response = await axios.get(newUrl)
-  try {
-    if (response.data.length > 0) {
-      const dataName = response.data[0]
-
-      const totalFrequency = dataName.res.reduce((acumulator, item) => {
-        return acumulator + item.frequencia
-      }, 0)
-
-      result.value = totalFrequency
-    } else {
-      result.value = 0
-    }
-  } catch (error) {
-    console.error('Error in searching for Names:', error)
-    alert('Does not working /: ')
-  } finally {
-    searched.value = true
-  }
-}
+const { result, loading, searched, search } = useIbge(props.url, props.type)
 </script>
 
 <template>
   <div class="ibge-section">
     <div class="section-title">{{ title }}</div>
-    <div>
+
+    <div class="input-group">
       <input
-        @input="searched = false"
         v-model="searchTerm"
         type="text"
-        :placeholder="placeholderTextfield"
+        :placeholder="placeholderTextField"
+        @keyup.enter="search(searchTerm)"
       />
+      <ButtonContrast :text="loading ? '...' : 'Search'" @clicked="search(searchTerm)" />
     </div>
-    <div>
-      <div>
-        <ButtonContrast text="Search" @clicked="searchIbge()" />
-      </div>
-      <div>
-        <p v-if="searched">
-          Searching the {{ title }} of: <strong>{{ searchTerm }}</strong> has
-          <strong>{{ result }} results</strong>
-        </p>
-        <p v-else-if="searchTerm">
-          Searching the {{ title }} of: <strong>{{ searchTerm }}</strong>
-        </p>
-      </div>
+
+    <div class="result-area">
+      <p v-if="searched">
+        Results for <strong>{{ searchTerm }}</strong
+        >:
+        <strong>{{ result.toLocaleString('pt-BR') }}</strong>
+      </p>
+      <p v-else-if="searchTerm && !loading">
+        Ready to search for <strong>{{ searchTerm }}</strong
+        >...
+      </p>
     </div>
   </div>
 </template>
 
 <style scoped>
-.section-title {
-  font-weight: bold;
-  font-size: large;
-}
-
+/* Seu CSS de 47% de largura e estilos dark */
 .ibge-section {
   min-width: 47%;
-  max-width: 47%;
-  min-height: 250px;
-  max-height: 250px;
   background: #1f1f1f;
-  border-radius: 5px;
-  padding: 10px;
+  border-radius: 8px;
+  padding: 15px;
+  display: flex;
   flex-direction: column;
-  gap: 10vh 10px;
+  gap: 15px;
+}
+.input-group {
+  display: flex;
+  gap: 10px;
+}
+input {
+  flex: 1;
+  padding: 8px;
+  background: #000;
+  color: #fff;
+  border: 1px solid #333;
 }
 </style>
