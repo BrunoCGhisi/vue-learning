@@ -3,7 +3,7 @@ import { ref } from 'vue'
 
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 
-import { useUsers } from '@/Composable/useUsers.js'
+import { useUsers } from '@/composable/useUsers.js'
 const { addUser } = useUsers()
 
 const emit = defineEmits(['close'])

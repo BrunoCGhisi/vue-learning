@@ -6,7 +6,7 @@ import DividerLine from '@/components/Commun/DividerLine.vue'
 
 import UserContainer from '@/components/Users/UserContainer.vue'
 
-import { useUsers } from '@/Composable/useUsers'
+import { useUsers } from '@/composable/useUsers'
 import IbgeContainer from '@/components/IBGE/Ibge-container.vue'
 
 const { users } = useUsers()

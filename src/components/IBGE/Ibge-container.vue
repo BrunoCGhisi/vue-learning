@@ -9,19 +9,19 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
   <div class="ibge-container">
     <IbgeSection
       title="Name Frequency"
-      topic-search="Nome"
+      topicSearch="Name"
       placeholderTextField="Name"
       url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
     />
     <IbgeSection
       title="Name Frequency"
-      topic-search="Nome"
+      topicSearch="Nome"
       placeholderTextField="Name"
-      url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
+      url="https://servicodados.ibge.gov.br/api/v1/localidades/estados/"
     />
     <IbgeSection
       title="Name Frequency"
-      topic-search="Nome"
+      topicSearch="Nome"
       placeholderTextField="Name"
       url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
     />

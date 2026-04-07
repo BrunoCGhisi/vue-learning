@@ -6,7 +6,7 @@ import FormEditUser from '@/components/Users/cardButtons/Forms/FormEditUser.vue'
 
 const editIsModalOpen = ref(false)
 
-import { useUsers } from '@/Composable/useUsers.js'
+import { useUsers } from '@/composable/useUsers.js'
 const { deleteUser } = useUsers()
 
 function handleDelete() {
