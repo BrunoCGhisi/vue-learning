@@ -5,7 +5,7 @@ import { ibgeFormatters } from '@/utils/ibgeFormatters'
 export function useIbge(baseUrl, type = 'list') {
   const result = ref(0)
   const loading = ref(false)
-  const searched = ref(false) // Adicionei para controlar o v-if da resposta
+  const searched = ref(false)
 
   const search = async (term) => {
     if (!term) return

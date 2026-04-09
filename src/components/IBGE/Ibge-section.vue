@@ -3,7 +3,6 @@ import { ref } from 'vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import { useIbge } from '@/Composable/useIbge.js'
 
-// Padronize o nome aqui
 const props = defineProps(['title', 'placeholderTextField', 'url', 'type'])
 
 const searchTerm = ref('')
@@ -39,7 +38,6 @@ const { result, loading, searched, search } = useIbge(props.url, props.type)
 </template>
 
 <style scoped>
-/* Seu CSS de 47% de largura e estilos dark */
 .ibge-section {
   min-width: 47%;
   background: #1f1f1f;
