@@ -20,7 +20,7 @@ export const ibgeFormatters = {
       data
         .filter((item) => item.regiao?.nome?.toLowerCase() === term.toLowerCase())
         .map((item) => item.nome)
-        .join(', ') || 'Nenhum estado encontrado para esta região'
+        .join(', ') || 'No states registered'
     )
   },
 }

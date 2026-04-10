@@ -22,7 +22,7 @@ export function useIbge(baseUrl, type = 'list', filterLocal = false) {
 
       searched.value = true
     } catch (err) {
-      console.error('Erro na busca:', err)
+      console.error('Error in search:', err)
       result.value = 0
     } finally {
       loading.value = false
