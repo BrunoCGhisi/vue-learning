@@ -2,7 +2,7 @@ import { ref } from 'vue'
 import axios from 'axios'
 import { ibgeFormatters } from '@/utils/ibgeFormatters'
 
-export function useIbge(baseUrl, type = 'list') {
+export function useIbge(baseUrl, type = 'list', filterLocal = false) {
   const result = ref(0)
   const loading = ref(false)
   const searched = ref(false)
@@ -13,12 +13,16 @@ export function useIbge(baseUrl, type = 'list') {
     searched.value = false
 
     try {
-      const response = await axios.get(baseUrl + term)
+      const finalUrl = filterLocal ? baseUrl : baseUrl + term
+      const response = await axios.get(finalUrl)
+
       const formatter = ibgeFormatters[type]
-      result.value = formatter(response.data)
+
+      result.value = formatter(response.data, term)
+
       searched.value = true
     } catch (err) {
-      console.error('Erro na busca IBGE:', err)
+      console.error('Erro na busca:', err)
       result.value = 0
     } finally {
       loading.value = false

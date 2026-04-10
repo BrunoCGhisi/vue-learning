@@ -15,10 +15,11 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
     />
 
     <IbgeSection
-      title="States/Cities Search"
-      placeholderTextField="Ex: SP ou RJ"
-      type="list"
-      url="https://servicodados.ibge.gov.br/api/v1/localidades/estados/"
+      title="Cities by Region in Brasil"
+      placeholderTextField="Ex: Sul (Sc, Pr, Rs)"
+      type="cityByRegion"
+      url="https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
+      :filterLocal="true"
     />
 
     <IbgeSection

@@ -3,10 +3,10 @@ import { ref } from 'vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import { useIbge } from '@/Composable/useIbge.js'
 
-const props = defineProps(['title', 'placeholderTextField', 'url', 'type'])
+const props = defineProps(['title', 'placeholderTextField', 'url', 'type', 'filterLocal'])
 
 const searchTerm = ref('')
-const { result, loading, searched, search } = useIbge(props.url, props.type)
+const { result, loading, searched, search } = useIbge(props.url, props.type, props.filterLocal)
 </script>
 
 <template>
