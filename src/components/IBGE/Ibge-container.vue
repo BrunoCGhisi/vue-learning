@@ -14,20 +14,20 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
       url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
     />
 
-    <IbgeSection
-      title="Cities by Region in Brasil"
-      placeholderTextField="Ex: Sul (Sc, Pr, Rs)"
-      type="cityByRegion"
-      url="https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"
-      :filterLocal="true"
-    />
+    <!--    <IbgeSection-->
+    <!--      title="Cities by Region in Brasil"-->
+    <!--      placeholderTextField="Ex: Sul (Sc, Pr, Rs)"-->
+    <!--      type="cityByRegion"-->
+    <!--      url="https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"-->
+    <!--      :filterLocal="true"-->
+    <!--    />-->
 
-    <IbgeSection
-      title="Country Capital"
-      placeholderTextField="Ex: AR (Argentina)"
-      type="paisCapital"
-      url="https://servicodados.ibge.gov.br/api/v1/paises/"
-    />
+    <!--    <IbgeSection-->
+    <!--      title="Country Capital"-->
+    <!--      placeholderTextField="Ex: AR (Argentina)"-->
+    <!--      type="paisCapital"-->
+    <!--      url="https://servicodados.ibge.gov.br/api/v1/paises/"-->
+    <!--    />-->
   </div>
 </template>
 
