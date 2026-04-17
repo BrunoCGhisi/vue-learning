@@ -1,12 +1,35 @@
 <script setup>
 import { ref } from 'vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
-import { useIbge } from '@/Composable/useIbge.js'
+import { Ibge } from '@/models/Ibge.js'
 
-const props = defineProps(['title', 'placeholderTextField', 'url', 'type', 'filterLocal'])
+const props = defineProps(['title', 'placeholderTextField', 'methodName'])
 
 const searchTerm = ref('')
-const { result, loading, searched, search } = useIbge(props.url, props.type, props.filterLocal)
+const result = ref('')
+const loading = ref(false)
+const searched = ref(false)
+
+async function handleSearch() {
+  if (!searchTerm.value || loading.value) return
+
+  loading.value = true
+  searched.value = false
+
+  try {
+    const method = Ibge[props.methodName]
+    if (method) {
+      result.value = await method(searchTerm.value)
+      searched.value = true
+    } else {
+      console.error(`Method ${props.methodName} not found ): `)
+    }
+  } catch (error) {
+    console.log(error, 'error!')
+  } finally {
+    loading.value = false
+  }
+}
 </script>
 
 <template>
@@ -18,9 +41,9 @@ const { result, loading, searched, search } = useIbge(props.url, props.type, pro
         v-model="searchTerm"
         type="text"
         :placeholder="placeholderTextField"
-        @keyup.enter="search(searchTerm)"
+        @keyup.enter="handleSearch"
       />
-      <ButtonContrast :text="loading ? '...' : 'Search'" @clicked="search(searchTerm)" />
+      <ButtonContrast :text="loading ? '...' : 'Search'" @clicked="handleSearch" />
     </div>
 
     <div class="result-area">
@@ -29,10 +52,7 @@ const { result, loading, searched, search } = useIbge(props.url, props.type, pro
         >:
         <strong>{{ result.toLocaleString('pt-BR') }}</strong>
       </p>
-      <p v-else-if="searchTerm && !loading">
-        Ready to search for <strong>{{ searchTerm }}</strong
-        >...
-      </p>
+      <p v-else-if="searchTerm && !loading">Ready to search...</p>
     </div>
   </div>
 </template>

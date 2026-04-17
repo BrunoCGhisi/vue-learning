@@ -7,12 +7,7 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
     <h1>IBGE Data Search</h1>
   </div>
   <div class="ibge-container">
-    <IbgeSection
-      title="Name Frequency"
-      placeholderTextField="Ex: Bruno"
-      type="name"
-      url="https://servicodados.ibge.gov.br/api/v2/censos/nomes/"
-    />
+    <IbgeSection title="Name Frequency" placeholderTextField="Ex: Bruno" methodName="findName" />
 
     <!--    <IbgeSection-->
     <!--      title="Cities by Region in Brasil"-->
