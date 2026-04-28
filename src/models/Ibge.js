@@ -36,5 +36,17 @@ export class Ibge {
     }
   }
 
-  static async findCapitalPerCountry(term) {}
+  static async findCapitalPerCountry(term) {
+    const url = `https://servicodados.ibge.gov.br/api/v1/paises/${term}`
+    try {
+      const response = await axios.get(url)
+      const data = response.data
+      if (!data || data.length === 0) return 0
+
+      return data[0].governo?.capital?.nome
+    } catch (err) {
+      console.error('Error in search:', err)
+      return 0
+    }
+  }
 }

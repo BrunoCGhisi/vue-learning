@@ -13,13 +13,11 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
       placeholderTextField="Ex: Sul (Sc, Pr, Rs)"
       methodName="findCitiesPerRegion"
     />
-
-    <!--    <IbgeSection-->
-    <!--      title="Country Capital"-->
-    <!--      placeholderTextField="Ex: AR (Argentina)"-->
-    <!--      type="paisCapital"-->
-    <!--      url="https://servicodados.ibge.gov.br/api/v1/paises/"-->
-    <!--    />-->
+    <IbgeSection
+      title="Country Capital"
+      placeholderTextField="Ex: AR (Argentina)"
+      methodName="findCapitalPerCountry"
+    />
   </div>
 </template>
 
