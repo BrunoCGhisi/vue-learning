@@ -63,7 +63,7 @@ export class Ibge {
         .map((item) => `${item.nome} (#${item.ranking})`)
         .join('\n')
     } catch (err) {
-      console.error('Error in search:', err)
+      console.error('Error search:', err)
       return 0
     }
   }
