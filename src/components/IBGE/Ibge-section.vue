@@ -82,4 +82,8 @@ input {
 .section-title {
   font-weight: bold;
 }
+
+.result-area strong {
+  white-space: pre-line;
+}
 </style>

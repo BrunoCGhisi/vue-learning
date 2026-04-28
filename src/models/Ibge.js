@@ -49,4 +49,22 @@ export class Ibge {
       return 0
     }
   }
+
+  static async findRankingNamePerDecade(term) {
+    const url = `https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking/?decada=${term}`
+    try {
+      const response = await axios.get(url)
+      const data = response.data
+
+      if (!data || data.length === 0) return 0
+
+      return data[0].res
+        .slice(0, 10)
+        .map((item) => `${item.nome} (#${item.ranking})`)
+        .join('\n')
+    } catch (err) {
+      console.error('Error in search:', err)
+      return 0
+    }
+  }
 }

@@ -18,6 +18,11 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
       placeholderTextField="Ex: AR (Argentina)"
       methodName="findCapitalPerCountry"
     />
+    <IbgeSection
+      title="Ranking of the names by decade in Brazil"
+      placeholderTextField="Ex: 1950"
+      methodName="findRankingNamePerDecade"
+    />
   </div>
 </template>
 
