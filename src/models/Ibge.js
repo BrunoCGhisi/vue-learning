@@ -16,4 +16,23 @@ export class Ibge {
       return 0
     }
   }
+
+  static async findCities(term) {
+    const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome`
+    try {
+      const response = await axios.get(url)
+      const data = response.data
+
+      if (!data || data.length === 0) return 0
+      return (
+        data
+          .filter((item) => item.regiao?.nome?.toLowerCase() === term.toLowerCase())
+          .map((item) => item.nome)
+          .join(', ') || 'No states registered'
+      )
+    } catch (err) {
+      console.error('Error in search:', err)
+      return 0
+    }
+  }
 }

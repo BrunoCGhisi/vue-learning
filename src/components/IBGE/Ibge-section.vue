@@ -78,4 +78,8 @@ input {
   color: #fff;
   border: 1px solid #333;
 }
+
+.section-title {
+  font-weight: bold;
+}
 </style>

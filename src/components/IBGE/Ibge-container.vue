@@ -8,14 +8,11 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
   </div>
   <div class="ibge-container">
     <IbgeSection title="Name Frequency" placeholderTextField="Ex: Bruno" methodName="findName" />
-
-    <!--    <IbgeSection-->
-    <!--      title="Cities by Region in Brasil"-->
-    <!--      placeholderTextField="Ex: Sul (Sc, Pr, Rs)"-->
-    <!--      type="cityByRegion"-->
-    <!--      url="https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"-->
-    <!--      :filterLocal="true"-->
-    <!--    />-->
+    <IbgeSection
+      title="Cities by Region in Brazil"
+      placeholderTextField="Ex: Sul (Sc, Pr, Rs)"
+      methodName="findCities"
+    />
 
     <!--    <IbgeSection-->
     <!--      title="Country Capital"-->
