@@ -11,7 +11,7 @@ import IbgeSection from '@/components/IBGE/Ibge-section.vue'
     <IbgeSection
       title="Cities by Region in Brazil"
       placeholderTextField="Ex: Sul (Sc, Pr, Rs)"
-      methodName="findCities"
+      methodName="findCitiesPerRegion"
     />
 
     <!--    <IbgeSection-->

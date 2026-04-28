@@ -17,7 +17,7 @@ export class Ibge {
     }
   }
 
-  static async findCities(term) {
+  static async findCitiesPerRegion(term) {
     const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome`
     try {
       const response = await axios.get(url)
@@ -35,4 +35,6 @@ export class Ibge {
       return 0
     }
   }
+
+  static async findCapitalPerCountry(term) {}
 }
