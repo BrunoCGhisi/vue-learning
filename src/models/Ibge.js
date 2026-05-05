@@ -7,8 +7,7 @@ export class Ibge {
   static async findName(term) {
     const url = `${baseUrl}v2/censos/nomes/${term}`
     try {
-      const response = await axios.get(url)
-      const data = response.data
+      const { data } = await axios.get(url)
 
       if (!data || data.length === 0) return 0
 
@@ -39,8 +38,7 @@ export class Ibge {
   static async findCapitalPerCountry(term) {
     const url = `${baseUrl}v1/paises/${term}`
     try {
-      const response = await axios.get(url)
-      const data = response.data
+      const { data } = await axios.get(url)
       if (!data || data.length === 0) return 0
 
       return data[0].governo?.capital?.nome
@@ -53,8 +51,7 @@ export class Ibge {
   static async findRankingNamePerDecade(term) {
     const url = `${baseUrl}v2/censos/nomes/ranking/?decada=${term}`
     try {
-      const response = await axios.get(url)
-      const data = response.data
+      const { data } = await axios.get(url)
 
       if (!data || data.length === 0) return 0
 
