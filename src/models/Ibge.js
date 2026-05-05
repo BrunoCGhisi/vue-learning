@@ -22,9 +22,7 @@ export class Ibge {
   static async findCitiesPerRegion(term) {
     const url = `${baseUrl}v1/localidades/estados?orderBy=nome`
     try {
-      const response = await axios.get(url)
-      const data = response.data
-
+      const { data } = await axios.get(url)
       if (!data || data.length === 0) return 0
       return (
         data
