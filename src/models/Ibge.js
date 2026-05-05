@@ -1,9 +1,11 @@
 import { ref } from 'vue'
 import axios from 'axios'
 
+const baseUrl = 'https://servicodados.ibge.gov.br/api/'
+
 export class Ibge {
   static async findName(term) {
-    const url = `https://servicodados.ibge.gov.br/api/v2/censos/nomes/${term}`
+    const url = `${baseUrl}v2/censos/nomes/${term}`
     try {
       const response = await axios.get(url)
       const data = response.data
@@ -18,7 +20,7 @@ export class Ibge {
   }
 
   static async findCitiesPerRegion(term) {
-    const url = `https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome`
+    const url = `${baseUrl}v1/localidades/estados?orderBy=nome`
     try {
       const response = await axios.get(url)
       const data = response.data
@@ -37,7 +39,7 @@ export class Ibge {
   }
 
   static async findCapitalPerCountry(term) {
-    const url = `https://servicodados.ibge.gov.br/api/v1/paises/${term}`
+    const url = `${baseUrl}v1/paises/${term}`
     try {
       const response = await axios.get(url)
       const data = response.data
@@ -51,7 +53,7 @@ export class Ibge {
   }
 
   static async findRankingNamePerDecade(term) {
-    const url = `https://servicodados.ibge.gov.br/api/v2/censos/nomes/ranking/?decada=${term}`
+    const url = `${baseUrl}v2/censos/nomes/ranking/?decada=${term}`
     try {
       const response = await axios.get(url)
       const data = response.data
