@@ -14,6 +14,7 @@ async function handleSearch() {
   if (!searchTerm.value || loading.value) return
 
   loading.value = true
+
   searched.value = false
 
   try {
