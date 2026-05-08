@@ -8,6 +8,7 @@ import UserContainer from '@/components/Users/UserContainer.vue'
 
 import { useUsers } from '@/composable/useUsers'
 import IbgeContainer from '@/components/IBGE/Ibge-container.vue'
+import CountriesContainer from '@/components/Countries/Countries-container.vue'
 
 const { users } = useUsers()
 
@@ -68,6 +69,10 @@ function duplicate() {
     <DividerLine />
 
     <ibge-container />
+
+    <DividerLine />
+
+    <CountriesContainer />
   </div>
 </template>
 
