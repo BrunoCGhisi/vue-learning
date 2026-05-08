@@ -2,7 +2,6 @@
 import { ref } from 'vue'
 
 const props = defineProps(['title', 'optionsList'])
-const options = ref([])
 const selectedItem = ref('')
 </script>
 

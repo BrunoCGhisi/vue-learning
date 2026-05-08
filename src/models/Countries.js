@@ -9,7 +9,7 @@ export class Countries {
 
       if (!data || data.length === 0) return 0
 
-      return data.map((item) => item.name?.official)
+      return data.map((item) => item.name?.common).sort()
     } catch (err) {
       console.error('Error in search:', err)
       return 0
