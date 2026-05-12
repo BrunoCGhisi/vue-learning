@@ -12,6 +12,7 @@ onMounted(async () => {
 </script>
 
 <template>
+  <div>AaaaaCaaaaaBaaaaaCaaaaaA</div>
   <SelectArrayList :optionsList="optionsList" />
 </template>
 
