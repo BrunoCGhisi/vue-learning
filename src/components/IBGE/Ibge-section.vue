@@ -80,10 +80,6 @@ input {
   border: 1px solid #333;
 }
 
-.section-title {
-  font-weight: bold;
-}
-
 .result-area strong {
   white-space: pre-line;
 }

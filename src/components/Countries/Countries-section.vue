@@ -11,9 +11,31 @@ onMounted(async () => {
 })
 </script>
 
+/*
+
 <template>
-  <div>AaaaaCaaaaaBaaaaaCaaaaaA</div>
-  <SelectArrayList :optionsList="optionsList" />
+  <div>
+    <div class="section-title">titulo</div>
+    <SelectArrayList :optionsList="optionsList" />
+
+    <!--
+    No método do search, pegar o número total de resultados e fazer um for.
+    Criar número de títulos igual ao número total de resultados.
+    Assim cada componente fica bonitinho
+    -->
+
+    <div class="section-title">nomeOficial</div>
+    <div class="section-result">resultadoNomeOficial</div>
+
+    <div class="section-title">capital</div>
+    <div class="section-result">resultadoCapital</div>
+
+    <div class="section-title">moeda</div>
+    <div class="section-result">resultadoMoeda</div>
+
+    <div class="section-title">símboloMoeda</div>
+    <div class="section-result">símboloMoeda</div>
+  </div>
 </template>
 
 <style scoped></style>

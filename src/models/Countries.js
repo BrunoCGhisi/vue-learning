@@ -15,4 +15,20 @@ export class Countries {
       return 0
     }
   }
+
+  static async searchCapitalByName(name) {
+    try {
+      const { data } = await axios.get(baseUrl)
+
+      if (!data || data.length === 0) return 0
+
+      return (
+        data.find((country) => country.name?.common?.toLowerCase() === name.toLowerCase())
+          ?.capital?.[0] || 'Not found'
+      )
+    } catch (err) {
+      console.error('Error in search:', err)
+      return 0
+    }
+  }
 }
