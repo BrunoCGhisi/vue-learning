@@ -14,17 +14,18 @@ onMounted(async () => {
 
 <template>
   <v-container>
-    <v-card>
+    <v-card title="Country basic informations" subtitle="Searching by the country common name">
       <v-select label="Select" :items="optionsList" />
-
+      <v-card-title> nomeOficial </v-card-title>
+      <v-card-text> resultadoNomeOficial </v-card-text>
       <!--
       No método do search, pegar o número total de resultados e fazer um for.
       Criar número de títulos igual ao número total de resultados.
       Assim cada componente fica bonitinho
       -->
 
-      <div class="section-title">nomeOficial</div>
-      <div class="section-result">resultadoNomeOficial</div>
+      <div class="section-title"></div>
+      <div class="section-result"></div>
 
       <div class="section-title">capital</div>
       <div class="section-result">resultadoCapital</div>
