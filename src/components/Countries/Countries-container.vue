@@ -7,8 +7,16 @@ import CountriesSection from '@/components/Countries/Countries-section.vue'
     <h1>Countries Data Search</h1>
   </div>
 
-  <CountriesSection />
-  <CountriesSection />
+  <CountriesSection
+    titleCard="Country basic information's"
+    subtitleCard="Searching by the country common name"
+    methodName="searchCountriesNames"
+  />
+  <CountriesSection
+    titleCard="Countries with the same currency"
+    subtitleCard="Grouping by one common currency"
+    methodName="searchCountriesNames"
+  />
 </template>
 
 <style scoped></style>

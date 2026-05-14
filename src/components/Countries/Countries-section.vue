@@ -1,30 +1,20 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-
+import { ref, onMounted, computed } from 'vue'
 import { Countries } from '@/models/Countries.js'
 
+const props = defineProps(['titleCard', 'subtitleCard', 'methodName'])
 const optionsList = ref([])
 const selectedCountry = ref('')
 
 onMounted(async () => {
-  optionsList.value = await Countries.searchCountriesNames()
+  optionsList.value = await Countries[props.methodName]()
 })
 </script>
 
-/*
-
 <template>
   <v-container>
-    <v-card
-      title="Country basic informations"
-      :subtitle="`Searching by the country common name: ${selectedCountry}`"
-    >
-      <!--
-        No método do search, pegar o número total de resultados e fazer um for.
-        Criar número de títulos igual ao número total de resultados.
-        Assim cada componente fica bonitinho
-      -->
-      <v-row size="12" class="ml-5 mt-5">
+    <v-card :title="titleCard" :subtitle="subtitleCard">
+      <v-row class="ml-5 mt-5">
         <v-col cols="4">
           <v-select label="Select country" :items="optionsList" v-model="selectedCountry" />
         </v-col>
@@ -34,7 +24,7 @@ onMounted(async () => {
         </v-col>
       </v-row>
 
-      <v-row size="12" class="ml-5 mt-5">
+      <v-row class="ml-5 mt-5">
         <v-col cols="4" />
         <v-col>
           <div>capital</div>
@@ -42,7 +32,7 @@ onMounted(async () => {
         </v-col>
       </v-row>
 
-      <v-row size="12" class="ml-5 mt-5">
+      <v-row class="ml-5 mt-5">
         <v-col cols="4" />
         <v-col>
           <div>moeda</div>
@@ -50,15 +40,14 @@ onMounted(async () => {
         </v-col>
       </v-row>
 
-      <v-row size="12" class="ml-5 mt-5">
+      <v-row class="ml-5 mt-5">
         <v-col cols="4" />
         <v-col>
           <div>simbolo</div>
-          <div>Moeda símbolo Moeda</div>
+          <div>símbolo Moeda</div>
         </v-col>
       </v-row>
-
-      <v-row size="12"> </v-row>
+      <v-row> </v-row>
     </v-card>
   </v-container>
 </template>
