@@ -4,6 +4,7 @@ import { ref, onMounted } from 'vue'
 import { Countries } from '@/models/Countries.js'
 
 const optionsList = ref([])
+const selectedCountry = ref('')
 
 onMounted(async () => {
   optionsList.value = await Countries.searchCountriesNames()
@@ -14,33 +15,50 @@ onMounted(async () => {
 
 <template>
   <v-container>
-    <v-card title="Country basic informations" subtitle="Searching by the country common name">
-      <v-row size="12">
-        <v-col cols="1"> </v-col>
-        <v-col cols="6">
-          <v-select label="Select" :items="optionsList" />
+    <v-card
+      title="Country basic informations"
+      :subtitle="`Searching by the country common name: ${selectedCountry}`"
+    >
+      <!--
+        No método do search, pegar o número total de resultados e fazer um for.
+        Criar número de títulos igual ao número total de resultados.
+        Assim cada componente fica bonitinho
+      -->
+      <v-row size="12" class="ml-5 mt-5">
+        <v-col cols="4">
+          <v-select label="Select country" :items="optionsList" v-model="selectedCountry" />
+        </v-col>
+        <v-col>
+          <div>nomeOficial</div>
+          <div>resultadoNomeOficial</div>
         </v-col>
       </v-row>
 
-      <v-card-title> nomeOficial </v-card-title>
-      <v-card-text> resultadoNomeOficial </v-card-text>
-      <!--
-      No método do search, pegar o número total de resultados e fazer um for.
-      Criar número de títulos igual ao número total de resultados.
-      Assim cada componente fica bonitinho
-      -->
+      <v-row size="12" class="ml-5 mt-5">
+        <v-col cols="4" />
+        <v-col>
+          <div>capital</div>
+          <div>resultado Capital</div>
+        </v-col>
+      </v-row>
 
-      <div class="section-title"></div>
-      <div class="section-result"></div>
+      <v-row size="12" class="ml-5 mt-5">
+        <v-col cols="4" />
+        <v-col>
+          <div>moeda</div>
+          <div>resultadoMoeda</div>
+        </v-col>
+      </v-row>
 
-      <div class="section-title">capital</div>
-      <div class="section-result">resultadoCapital</div>
+      <v-row size="12" class="ml-5 mt-5">
+        <v-col cols="4" />
+        <v-col>
+          <div>simbolo</div>
+          <div>Moeda símbolo Moeda</div>
+        </v-col>
+      </v-row>
 
-      <div class="section-title">moeda</div>
-      <div class="section-result">resultadoMoeda</div>
-
-      <div class="section-title">símboloMoeda</div>
-      <div class="section-result">símboloMoeda</div>
+      <v-row size="12"> </v-row>
     </v-card>
   </v-container>
 </template>

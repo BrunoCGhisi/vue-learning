@@ -8,6 +8,7 @@ import CountriesSection from '@/components/Countries/Countries-section.vue'
   </div>
 
   <CountriesSection />
+  <CountriesSection />
 </template>
 
 <style scoped></style>
