@@ -15,7 +15,13 @@ onMounted(async () => {
 <template>
   <v-container>
     <v-card title="Country basic informations" subtitle="Searching by the country common name">
-      <v-select label="Select" :items="optionsList" />
+      <v-row size="12">
+        <v-col cols="1"> </v-col>
+        <v-col cols="6">
+          <v-select label="Select" :items="optionsList" />
+        </v-col>
+      </v-row>
+
       <v-card-title> nomeOficial </v-card-title>
       <v-card-text> resultadoNomeOficial </v-card-text>
       <!--
