@@ -39,7 +39,7 @@ watch(selectedCountry, async (newValue) => {
       <v-row class="ml-5 mt-5">
         <v-col cols="4" />
         <v-col>
-          <div class="card-title-result">nomeOficial</div>
+          <div class="card-title-result">NomeOficial</div>
           <div>{{ cardList[0] }}</div>
         </v-col>
       </v-row>
@@ -47,7 +47,7 @@ watch(selectedCountry, async (newValue) => {
       <v-row class="ml-5 mt-5">
         <v-col cols="4" />
         <v-col>
-          <div class="card-title-result">capital</div>
+          <div class="card-title-result">Capital</div>
           <div>{{ cardList[1] }}</div>
         </v-col>
       </v-row>

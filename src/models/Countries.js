@@ -5,8 +5,8 @@ const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currenci
 export class Countries {
   static async cardCountryBasicInfo(name) {
     const listResult = []
-    listResult.push(await Countries.searchCapitalByName(name))
     listResult.push(await Countries.searchOficialName(name))
+    listResult.push(await Countries.searchCapitalByName(name))
     return listResult
   }
 
