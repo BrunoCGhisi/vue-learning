@@ -5,7 +5,7 @@ const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currenci
 export class Countries {
   static async cardCountryBasicInfo(name) {
     const listResult = []
-    listResult.push(await Countries.searchOficialName(name))
+    listResult.push(await Countries.searchOfficialName(name))
     listResult.push(await Countries.searchCapitalByName(name))
     return listResult
   }
@@ -23,19 +23,19 @@ export class Countries {
     }
   }
 
-  static async searchOficialName(name) {
+  static async searchOfficialName(name) {
     try {
       const { data } = await axios.get(baseUrl)
 
-      if (!data || data.length === 0) return 0
+      if (!data || data.length === 0) return 'Not found'
 
       return (
-        data.find((country) => country.name?.official?.toLowerCase() === name.toLowerCase())
-          ?.capital?.[0] || 'Not found'
+        data.find((country) => country.name?.common?.toLowerCase() === name.toLowerCase())?.name
+          ?.official || 'Not found'
       )
     } catch (err) {
       console.error('Error in search:', err)
-      return 0
+      return 'Not found'
     }
   }
 
@@ -46,7 +46,7 @@ export class Countries {
       if (!data || data.length === 0) return 0
 
       return (
-        data.find((country) => country.capital.toLowerCase() === name.toLowerCase())
+        data.find((country) => country.name?.common?.toLowerCase() === name.toLowerCase())
           ?.capital?.[0] || 'Not found'
       )
     } catch (err) {
