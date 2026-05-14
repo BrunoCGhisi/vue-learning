@@ -36,6 +36,7 @@ watch(selectedCountry, async (newValue) => {
         </v-col>
       </v-row>
 
+      <!-- Eu to literalmente chamando várias vezes um mesmo elemento. Componentizar eles com um v-for -->
       <v-row class="ml-5 mt-5">
         <v-col cols="4" />
         <v-col>
