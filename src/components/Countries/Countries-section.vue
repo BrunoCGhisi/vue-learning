@@ -1,13 +1,26 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { Countries } from '@/models/Countries.js'
+import { ref, onMounted, watch } from 'vue'
 
-const props = defineProps(['titleCard', 'subtitleCard', 'methodName'])
+const props = defineProps([
+  'titleCard',
+  'subtitleCard',
+  'description',
+  'selectMethodName',
+  'cardMethodName',
+])
 const optionsList = ref([])
+const cardList = ref([])
+
 const selectedCountry = ref('')
 
 onMounted(async () => {
-  optionsList.value = await Countries[props.methodName]()
+  optionsList.value = await props.selectMethodName()
+})
+
+watch(selectedCountry, async (newValue) => {
+  if (!newValue) return
+
+  cardList.value = await props.cardMethodName(newValue)
 })
 </script>
 
@@ -19,23 +32,30 @@ onMounted(async () => {
           <v-select label="Select country" :items="optionsList" v-model="selectedCountry" />
         </v-col>
         <v-col>
-          <div>nomeOficial</div>
-          <div>resultadoNomeOficial</div>
+          <div>{{ description }}</div>
         </v-col>
       </v-row>
 
       <v-row class="ml-5 mt-5">
         <v-col cols="4" />
         <v-col>
-          <div>capital</div>
-          <div>resultado Capital</div>
+          <div class="card-title-result">nomeOficial</div>
+          <div>{{ cardList[0] }}</div>
         </v-col>
       </v-row>
 
       <v-row class="ml-5 mt-5">
         <v-col cols="4" />
         <v-col>
-          <div>moeda</div>
+          <div class="card-title-result">capital</div>
+          <div>{{ cardList[1] }}</div>
+        </v-col>
+      </v-row>
+
+      <v-row class="ml-5 mt-5">
+        <v-col cols="4" />
+        <v-col lass="card-title-result">
+          <div class="card-title-result">moeda</div>
           <div>resultadoMoeda</div>
         </v-col>
       </v-row>
@@ -43,7 +63,7 @@ onMounted(async () => {
       <v-row class="ml-5 mt-5">
         <v-col cols="4" />
         <v-col>
-          <div>simbolo</div>
+          <div class="card-title-result">Simbolo</div>
           <div>símbolo Moeda</div>
         </v-col>
       </v-row>
@@ -52,4 +72,13 @@ onMounted(async () => {
   </v-container>
 </template>
 
-<style scoped></style>
+<style scoped>
+.card-title-result {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.card-text-result {
+  font-size: 1.2rem;
+}
+</style>
