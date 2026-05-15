@@ -25,10 +25,15 @@ export class Countries {
   }
 
   static async cardCountrySameCurrency(selectedCurrency) {
+    const listCountries = await Countries.SearchCountryListByCurrency(selectedCurrency)
     return [
       {
+        title: 'Total countries:',
+        result: listCountries.length,
+      },
+      {
         title: 'Countries list:',
-        result: await Countries.SearchCountryListByCurrecy(selectedCurrency),
+        result: listCountries.join(', '),
       },
     ]
   }
@@ -135,13 +140,11 @@ export class Countries {
     }
   }
 
-  //return data[0].res.reduce((acc, item) => acc + item.frequencia, 0)
-  static async SearchCountryListByCurrecy(selectedCurrency) {
+  static async SearchCountryListByCurrency(selectedCurrency) {
     try {
       const { data } = await axios.get(baseUrl)
 
       if (!data || data.length === 0) return 0
-      //Listar o nome comum de todos os paises que tem X moeda
 
       const countries = data
         .filter((country) => {
@@ -149,8 +152,9 @@ export class Countries {
           return currencies.some((currency) => currency.name === selectedCurrency)
         })
         .map((country) => country.name?.common)
+        .sort()
 
-      return countries.join(', ')
+      return countries
     } catch (err) {
       console.error('Error in search:', err)
       return 0
