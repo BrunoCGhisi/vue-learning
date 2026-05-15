@@ -3,10 +3,12 @@ import axios from 'axios'
 const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currencies'
 
 export class Countries {
-  static async cardCountryBasicInfo(name) {
+  static async cardCountryBasicInfo(selectedName) {
     const listResult = []
-    listResult.push(await Countries.searchOfficialName(name))
-    listResult.push(await Countries.searchCapitalByName(name))
+    listResult.push(await Countries.searchOfficialName(selectedName))
+    listResult.push(await Countries.searchCapitalByName(selectedName))
+    listResult.push(await Countries.searchCurrencyByName(selectedName))
+    listResult.push(await Countries.searchCurrencySymbolByName(selectedName))
     return listResult
   }
 
@@ -23,15 +25,15 @@ export class Countries {
     }
   }
 
-  static async searchOfficialName(name) {
+  static async searchOfficialName(selectedName) {
     try {
       const { data } = await axios.get(baseUrl)
 
       if (!data || data.length === 0) return 'Not found'
 
       return (
-        data.find((country) => country.name?.common?.toLowerCase() === name.toLowerCase())?.name
-          ?.official || 'Not found'
+        data.find((country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase())
+          ?.name?.official || 'Not found'
       )
     } catch (err) {
       console.error('Error in search:', err)
@@ -39,16 +41,50 @@ export class Countries {
     }
   }
 
-  static async searchCapitalByName(name) {
+  static async searchCapitalByName(selectedName) {
     try {
       const { data } = await axios.get(baseUrl)
 
       if (!data || data.length === 0) return 0
 
       return (
-        data.find((country) => country.name?.common?.toLowerCase() === name.toLowerCase())
-          ?.capital?.[0] || 'Not found'
+        data.find((country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase())
+          ?.capital?.[0] || 'Does not have a capital'
       )
+    } catch (err) {
+      console.error('Error in search:', err)
+      return 0
+    }
+  }
+
+  static async searchCurrencyByName(selectedName) {
+    try {
+      const { data } = await axios.get(baseUrl)
+
+      if (!data || data.length === 0) return 0
+
+      const country = data.find(
+        (country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase(),
+      )
+
+      return Object.values(country.currencies)[0]?.name || 'Does not have a currency'
+    } catch (err) {
+      console.error('Error in search:', err)
+      return 0
+    }
+  }
+
+  static async searchCurrencySymbolByName(selectedName) {
+    try {
+      const { data } = await axios.get(baseUrl)
+
+      if (!data || data.length === 0) return 0
+
+      const country = data.find(
+        (country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase(),
+      )
+
+      return Object.values(country.currencies)[0]?.symbol || 'Does not have a currency'
     } catch (err) {
       console.error('Error in search:', err)
       return 0
