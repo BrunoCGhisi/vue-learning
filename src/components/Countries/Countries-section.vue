@@ -36,8 +36,8 @@ watch(selectedCountry, async (newValue) => {
         </v-col>
       </v-row>
 
-      <!-- Eu to literalmente chamando várias vezes um mesmo elemento. Componentizar eles com um v-for -->
       <v-row v-for="item in cardList" :key="item.title" class="ml-5 mt-5">
+        <v-col cols="4" />
         <v-col>
           <div class="card-title-result">{{ item.title }}</div>
           <div>{{ item.result }}</div>
