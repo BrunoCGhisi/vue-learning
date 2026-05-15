@@ -20,7 +20,7 @@ import { Countries } from '@/models/Countries.js'
     subtitleCard="Grouping by one common currency"
     description="This card you may search for a national currency, you will have a list of all countries that may use the specific currency. Have fun searching!"
     :selectMethodName="Countries.SelectSearchCurrencies"
-    :cardMethodName="Countries.cardCountryBasicInfo"
+    :cardMethodName="Countries.cardCountrySameCurrency"
   />
 </template>
 

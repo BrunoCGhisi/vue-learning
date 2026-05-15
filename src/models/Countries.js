@@ -24,11 +24,11 @@ export class Countries {
     ]
   }
 
-  static async cardCountrySameCurrency(selectedName) {
+  static async cardCountrySameCurrency(selectedCurrency) {
     return [
       {
         title: 'Countries list:',
-        result: await Countries.searchOfficialName(selectedName),
+        result: await Countries.SearchCountryListByCurrecy(selectedCurrency),
       },
     ]
   }
@@ -51,10 +51,14 @@ export class Countries {
       const { data } = await axios.get(baseUrl)
 
       if (!data || data.length === 0) return 0
-      const a = 0
+
       let currencies = data
         .flatMap((country) => Object.values(country.currencies || {}))
         .map((currency) => currency?.name)
+
+      currencies = currencies.filter(
+        (currency) => currencies.indexOf(currency) !== currencies.lastIndexOf(currency),
+      )
 
       currencies = [...new Set(currencies)].sort()
 
@@ -137,11 +141,16 @@ export class Countries {
       const { data } = await axios.get(baseUrl)
 
       if (!data || data.length === 0) return 0
+      //Listar o nome comum de todos os paises que tem X moeda
 
-      const country = data.find(
-        (country) => country.name?.common?.toLowerCase() === selectedCurrency.toLowerCase(),
-      )
-      return selectedCurrency
+      const countries = data
+        .filter((country) => {
+          const currencies = Object.values(country.currencies || {})
+          return currencies.some((currency) => currency.name === selectedCurrency)
+        })
+        .map((country) => country.name?.common)
+
+      return countries.join(', ')
     } catch (err) {
       console.error('Error in search:', err)
       return 0
