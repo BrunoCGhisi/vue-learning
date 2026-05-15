@@ -24,4 +24,16 @@ import { Countries } from '@/models/Countries.js'
   />
 </template>
 
-<style scoped></style>
+<style scoped>
+:deep(.v-card-title) {
+  color: #ffde00;
+}
+
+:deep(.v-card-subtitle) {
+  color: #effb4b;
+}
+
+:deep(.v-select) {
+  color: #ffde00;
+}
+</style>

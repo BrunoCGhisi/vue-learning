@@ -50,11 +50,12 @@ watch(selectedCountry, async (newValue) => {
 
 <style scoped>
 .card-title-result {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
+  color: #ffde00;
 }
 
 .card-text-result {
-  font-size: 1.2rem;
+  font-size: 1rem;
 }
 </style>

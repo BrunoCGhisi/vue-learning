@@ -14,7 +14,18 @@ const vuetify = createVuetify({
   components,
   directives,
   theme: {
-    defaultTheme: 'dark', // já que seu projeto é dark
+    defaultTheme: 'dark',
+
+    themes: {
+      dark: {
+        colors: {
+          primary: '#ffde00',
+          secondary: '#effb4b',
+          accent: '#82B1FF',
+          surface: '#1E1E1E',
+        },
+      },
+    },
   },
 })
 
