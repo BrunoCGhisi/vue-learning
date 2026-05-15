@@ -37,35 +37,10 @@ watch(selectedCountry, async (newValue) => {
       </v-row>
 
       <!-- Eu to literalmente chamando várias vezes um mesmo elemento. Componentizar eles com um v-for -->
-      <v-row class="ml-5 mt-5">
-        <v-col cols="4" />
+      <v-row v-for="item in cardList" :key="item.title" class="ml-5 mt-5">
         <v-col>
-          <div class="card-title-result">NomeOficial</div>
-          <div>{{ cardList[0] }}</div>
-        </v-col>
-      </v-row>
-
-      <v-row class="ml-5 mt-5">
-        <v-col cols="4" />
-        <v-col>
-          <div class="card-title-result">Capital</div>
-          <div>{{ cardList[1] }}</div>
-        </v-col>
-      </v-row>
-
-      <v-row class="ml-5 mt-5">
-        <v-col cols="4" />
-        <v-col lass="card-title-result">
-          <div class="card-title-result">Moeda</div>
-          <div>{{ cardList[2] }}</div>
-        </v-col>
-      </v-row>
-
-      <v-row class="ml-5 mt-5">
-        <v-col cols="4" />
-        <v-col>
-          <div class="card-title-result">Simbolo</div>
-          <div>{{ cardList[3] }}</div>
+          <div class="card-title-result">{{ item.title }}</div>
+          <div>{{ item.result }}</div>
         </v-col>
       </v-row>
       <v-row> </v-row>

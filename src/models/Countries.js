@@ -4,12 +4,24 @@ const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currenci
 
 export class Countries {
   static async cardCountryBasicInfo(selectedName) {
-    const listResult = []
-    listResult.push(await Countries.searchOfficialName(selectedName))
-    listResult.push(await Countries.searchCapitalByName(selectedName))
-    listResult.push(await Countries.searchCurrencyByName(selectedName))
-    listResult.push(await Countries.searchCurrencySymbolByName(selectedName))
-    return listResult
+    return [
+      {
+        title: 'Official name:',
+        result: await Countries.searchOfficialName(selectedName),
+      },
+      {
+        title: 'Capital:',
+        result: await Countries.searchCapitalByName(selectedName),
+      },
+      {
+        title: 'Currency name:',
+        result: await Countries.searchCurrencyByName(selectedName),
+      },
+      {
+        title: 'Currency symbol:',
+        result: await Countries.searchCurrencySymbolByName(selectedName),
+      },
+    ]
   }
 
   static async SelectSearchCountriesNames() {
