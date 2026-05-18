@@ -4,28 +4,31 @@ const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currenci
 
 export class Countries {
   static async cardCountryBasicInfo(selectedName) {
+    const { data } = await axios.get(baseUrl)
     return [
       {
         title: 'Official name:',
-        result: await Countries.searchOfficialName(selectedName),
+        result: await Countries.searchOfficialName(selectedName, data),
       },
       {
         title: 'Capital:',
-        result: await Countries.searchCapitalByName(selectedName),
+        result: await Countries.searchCapitalByName(selectedName, data),
       },
       {
         title: 'Currency name:',
-        result: await Countries.searchCurrencyByName(selectedName),
+        result: await Countries.searchCurrencyByName(selectedName, data),
       },
       {
         title: 'Currency symbol:',
-        result: await Countries.searchCurrencySymbolByName(selectedName),
+        result: await Countries.searchCurrencySymbolByName(selectedName, data),
       },
     ]
   }
 
   static async cardCountrySameCurrency(selectedCurrency) {
-    const listCountries = await Countries.SearchCountryListByCurrency(selectedCurrency)
+    const { data } = await axios.get(baseUrl)
+    const listCountries = await Countries.SearchCountryListByCurrency(selectedCurrency, data)
+
     return [
       {
         title: 'Total countries:',
@@ -74,9 +77,10 @@ export class Countries {
     }
   }
 
-  static async searchOfficialName(selectedName) {
+  static async searchOfficialName(selectedName, data) {
     try {
-      const { data } = await axios.get(baseUrl)
+
+      // const { data } = await axios.get(baseUrl)
 
       if (!data || data.length === 0) return 'Not found'
 
@@ -90,9 +94,9 @@ export class Countries {
     }
   }
 
-  static async searchCapitalByName(selectedName) {
+  static async searchCapitalByName(selectedName, data) {
     try {
-      const { data } = await axios.get(baseUrl)
+      // const { data } = await axios.get(baseUrl)
 
       if (!data || data.length === 0) return 0
 
@@ -106,11 +110,11 @@ export class Countries {
     }
   }
 
-  static async searchCurrencyByName(selectedName) {
+  static async searchCurrencyByName(selectedName, data) {
     try {
-      const { data } = await axios.get(baseUrl)
+      // const { data } = await axios.get(baseUrl)
 
-      if (!data || data.length === 0) return 0
+      if (!data || data.length === 0) return Not found'
 
       const country = data.find(
         (country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase(),
@@ -123,11 +127,11 @@ export class Countries {
     }
   }
 
-  static async searchCurrencySymbolByName(selectedName) {
+  static async searchCurrencySymbolByName(selectedName, data) {
     try {
-      const { data } = await axios.get(baseUrl)
+      // const { data } = await axios.get(baseUrl)
 
-      if (!data || data.length === 0) return 0
+      if (!data || data.length === 0) return 'Not found'
 
       const country = data.find(
         (country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase(),
@@ -140,11 +144,11 @@ export class Countries {
     }
   }
 
-  static async SearchCountryListByCurrency(selectedCurrency) {
+  static async SearchCountryListByCurrency(selectedCurrency, data) {
     try {
-      const { data } = await axios.get(baseUrl)
+      // const { data } = await axios.get(baseUrl)
 
-      if (!data || data.length === 0) return 0
+      if (!data || data.length === 0) return 'Not found'
 
       const countries = data
         .filter((country) => {
