@@ -94,33 +94,6 @@ export class Countries {
     }
   }
 
-  static async searchCurrencyByName(selectedName, data) {
-    try {
-      const country = data.find(
-        (country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase(),
-      )
-
-      return Object.values(country.currencies)[0]?.name || 'Does not have a currency'
-    } catch (err) {
-      console.error('Error in search:', err)
-      return 0
-    }
-  }
-
-  static async searchCurrencySymbolByName(selectedName, data) {
-    try {
-      const country = data.find(
-        (country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase(),
-      )
-      const currencyCode = Object.keys(country.currencies)[0]
-      console.log(Object.keys(country.currencies))
-      return country.currencies[currencyCode].symbol || 'Not found'
-    } catch (err) {
-      console.error('Error in search:', err)
-      return 0
-    }
-  }
-
   static async SearchCountryListByCurrency(selectedCurrency, data) {
     try {
       const countries = data
