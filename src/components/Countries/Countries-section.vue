@@ -11,17 +11,22 @@ const props = defineProps([
 const optionsList = ref([])
 const cardList = ref([])
 
-const selectedCountry = ref('')
+const selectedItem = ref('')
 
 onMounted(async () => {
   optionsList.value = await props.selectMethodName()
 })
 
-watch(selectedCountry, async (newValue) => {
-  if (!newValue) return
+// watch(selectedCountry, async (newValue) => {
+//   if (!newValue) return
+//
+//   cardList.value = await props.cardMethodName(newValue)
+// })
 
-  cardList.value = await props.cardMethodName(newValue)
-})
+async function handleSelect(item) {
+  console.log('Escolhi:' + item)
+  cardList.value = await props.cardMethodName(item)
+}
 </script>
 
 <template>
@@ -29,7 +34,12 @@ watch(selectedCountry, async (newValue) => {
     <v-card :title="titleCard" :subtitle="subtitleCard">
       <v-row class="ml-5 mt-5">
         <v-col cols="4">
-          <v-select label="Select country" :items="optionsList" v-model="selectedCountry" />
+          <v-select
+            label="Select country"
+            :items="optionsList"
+            v-model="selectedItem"
+            @update:modelValue="handleSelect"
+          />
         </v-col>
         <v-col>
           <div>{{ description }}</div>
