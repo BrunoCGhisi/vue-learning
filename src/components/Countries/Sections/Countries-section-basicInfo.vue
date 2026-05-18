@@ -1,13 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 
-const props = defineProps([
-  'titleCard',
-  'subtitleCard',
-  'description',
-  'selectMethodName',
-  'cardMethodName',
-])
+const props = defineProps(['titleCard', 'subtitleCard', 'description'])
 const optionsList = ref([])
 const cardList = ref([])
 
