@@ -79,7 +79,6 @@ export class Countries {
 
   static async searchOfficialName(selectedName, data) {
     try {
-
       // const { data } = await axios.get(baseUrl)
 
       if (!data || data.length === 0) return 'Not found'
@@ -114,7 +113,7 @@ export class Countries {
     try {
       // const { data } = await axios.get(baseUrl)
 
-      if (!data || data.length === 0) return Not found'
+      if (!data || data.length === 0) return 'Not found'
 
       const country = data.find(
         (country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase(),
