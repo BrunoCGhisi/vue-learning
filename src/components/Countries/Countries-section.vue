@@ -34,7 +34,9 @@ async function handleSelect(item) {
     <v-card :title="titleCard" :subtitle="subtitleCard">
       <v-row class="ml-5 mt-5">
         <v-col cols="4">
-          <v-select
+          <v-autocomplete
+            color="primary"
+            base-color="primary"
             label="Select country"
             :items="optionsList"
             v-model="selectedItem"
