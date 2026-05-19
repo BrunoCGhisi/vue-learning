@@ -14,7 +14,9 @@ async function cardCountryBasicInfo(selectedItem) {
   const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currencies'
   const { data } = await axios.get(baseUrl)
 
-  if (!data || data.length === 0) return 'Not found'
+  if (!Countries.verifyData(data)) {
+    return []
+  }
 
   const country = Countries.findCountryByName(selectedItem, data)
 

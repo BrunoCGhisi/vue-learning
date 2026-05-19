@@ -9,12 +9,16 @@ export class Countries {
     )
   }
 
+  static verifyData(data) {
+    return data && data.length > 0
+  }
+
   static async selectCountriesNames() {
     try {
-      const { data } = await axios.get(baseUrl)
-
-      if (!data || data.length === 0) return 0
-
+      let { data } = await axios.get(baseUrl)
+      if (!Countries.verifyData(data)) {
+        return []
+      }
       return data.map((item) => item.name?.common).sort()
     } catch (err) {
       console.error('Error in search:', err)
@@ -26,7 +30,9 @@ export class Countries {
     try {
       const { data } = await axios.get(baseUrl)
 
-      if (!data || data.length === 0) return 0
+      if (!Countries.verifyData(data)) {
+        return []
+      }
 
       let currencies = data
         .flatMap((country) => Object.values(country.currencies || {}))
@@ -45,7 +51,11 @@ export class Countries {
     }
   }
 
-  static SearchCountryListByCurrency(selectedCurrency, data) {
+  static async SearchCountryListByCurrency(selectedCurrency, data) {
+    if (!Countries.verifyData(data)) {
+      return []
+    }
+
     try {
       const countries = data
         .filter((country) => {

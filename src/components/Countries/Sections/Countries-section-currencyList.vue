@@ -13,6 +13,9 @@ const selectedItem = ref('')
 async function cardCountrySameCurrency(selectedCurrency) {
   const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currencies'
   const { data } = await axios.get(baseUrl)
+  if (!Countries.verifyData(data)) {
+    return []
+  }
   const listCountries = await Countries.SearchCountryListByCurrency(selectedCurrency, data)
 
   return [
