@@ -45,7 +45,7 @@ async function cardCountryBasicInfo(selectedItem) {
 }
 
 onMounted(async () => {
-  optionsList.value = await Countries.SelectCountriesNames()
+  optionsList.value = await Countries.selectCountriesNames()
 })
 
 async function handleSelect(item) {
@@ -58,7 +58,7 @@ async function handleSelect(item) {
 
 <template>
   <v-container>
-    <v-card :title="titleCard" :subtitle="subtitleCard">
+    <v-card :title="props.titleCard" :subtitle="props.subtitleCard">
       <v-row class="ml-5 mt-5">
         <v-col cols="4">
           <v-autocomplete
@@ -71,7 +71,7 @@ async function handleSelect(item) {
           />
         </v-col>
         <v-col>
-          <div>{{ description }}</div>
+          <div>{{ props.description }}</div>
         </v-col>
       </v-row>
 

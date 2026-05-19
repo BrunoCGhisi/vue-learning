@@ -3,62 +3,7 @@ import axios from 'axios'
 const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currencies'
 
 export class Countries {
-  static async cardCountryBasicInfo(selectedName) {
-    const { data } = await axios.get(baseUrl)
-    if (!data || data.length === 0) return 'Not found'
-
-    const country = Countries.findCountryByName(selectedName, data)
-
-    let currencyCode = Object.keys(country.currencies)[0]
-    currencyCode = country.currencies[currencyCode]
-
-    if (!country) {
-      return []
-    }
-
-    return [
-      {
-        title: 'Official name:',
-        result: country.name?.official,
-      },
-      {
-        title: 'Capital:',
-        result: country.capital?.[0],
-      },
-      {
-        title: 'Currency name:',
-        result: currencyCode.name,
-      },
-      {
-        title: 'Currency symbol:',
-        result: currencyCode.symbol,
-      },
-    ]
-  }
-
-  static findCountryByName(selectedName, data) {
-    return data.find(
-      (country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase(),
-    )
-  }
-
-  static async cardCountrySameCurrency(selectedCurrency) {
-    const { data } = await axios.get(baseUrl)
-    const listCountries = await Countries.SearchCountryListByCurrency(selectedCurrency, data)
-
-    return [
-      {
-        title: 'Total countries:',
-        result: listCountries.length,
-      },
-      {
-        title: 'Countries list:',
-        result: listCountries.join(', '),
-      },
-    ]
-  }
-
-  static async SelectCountriesNames() {
+  static async selectCountriesNames() {
     try {
       const { data } = await axios.get(baseUrl)
 
@@ -71,7 +16,7 @@ export class Countries {
     }
   }
 
-  static async SelectSearchCurrencies() {
+  static async selectSearchCurrencies() {
     try {
       const { data } = await axios.get(baseUrl)
 
@@ -94,7 +39,7 @@ export class Countries {
     }
   }
 
-  static async SearchCountryListByCurrency(selectedCurrency, data) {
+  static SearchCountryListByCurrency(selectedCurrency, data) {
     try {
       const countries = data
         .filter((country) => {

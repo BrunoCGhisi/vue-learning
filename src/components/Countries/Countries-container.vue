@@ -1,7 +1,5 @@
 <script setup>
-import CountriesSection from '@/components/Countries/Countries-section.vue'
-import { Countries } from '@/models/Countries.js'
-import CountriesSectionBasicInfo from '@/components/Countries/Sections/Countries-section-basicInfo.vue'
+import { CountriesSectionBasicInfo, CountriesSectionCurrencyList } from './Sections'
 </script>
 
 <template>
@@ -14,12 +12,10 @@ import CountriesSectionBasicInfo from '@/components/Countries/Sections/Countries
     subtitleCard="Searching by the country common name"
     description="This card you may search for a country name, you will have some basic information's like 'Oficial Name', 'Capital', 'National Currencie', 'Currencie Symbol'. Have fun searching!"
   />
-  <CountriesSection
+  <CountriesSectionCurrencyList
     titleCard="Countries with the same currency"
     subtitleCard="Grouping by one common currency"
     description="This card you may search for a national currency, you will have a list of all countries that may use the specific currency. Have fun searching!"
-    :selectMethodName="Countries.SelectSearchCurrencies"
-    :cardMethodName="Countries.cardCountrySameCurrency"
   />
 </template>
 

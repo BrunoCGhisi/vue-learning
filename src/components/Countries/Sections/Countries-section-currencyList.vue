@@ -1,33 +1,46 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { Countries } from '@/models/Countries.js'
 
-const props = defineProps([
-  'titleCard',
-  'subtitleCard',
-  'description',
-  'selectMethodName',
-  'cardMethodName',
-])
+const props = defineProps(['titleCard', 'subtitleCard', 'description'])
 const optionsList = ref([])
 const cardList = ref([])
 
 const selectedItem = ref('')
 
+async function cardCountrySameCurrency(selectedCurrency) {
+  const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currencies'
+  const { data } = await axios.get(baseUrl)
+  const listCountries = await Countries.SearchCountryListByCurrency(selectedCurrency, data)
+
+  return [
+    {
+      title: 'Total countries:',
+      result: listCountries.length,
+    },
+    {
+      title: 'Countries list:',
+      result: listCountries.join(', '),
+    },
+  ]
+}
+
 onMounted(async () => {
-  optionsList.value = await props.selectMethodName()
+  optionsList.value = await Countries.selectSearchCurrencies()
 })
 
 async function handleSelect(item) {
   console.log('Escolhi:' + item)
   if (!item) return
 
-  cardList.value = await props.cardMethodName(item)
+  cardList.value = await cardCountrySameCurrency(item)
 }
 </script>
 
 <template>
   <v-container>
-    <v-card :title="titleCard" :subtitle="subtitleCard">
+    <v-card :title="props.titleCard" :subtitle="props.subtitleCard">
       <v-row class="ml-5 mt-5">
         <v-col cols="4">
           <v-autocomplete
@@ -40,7 +53,7 @@ async function handleSelect(item) {
           />
         </v-col>
         <v-col>
-          <div>{{ description }}</div>
+          <div>{{ props.description }}</div>
         </v-col>
       </v-row>
 
