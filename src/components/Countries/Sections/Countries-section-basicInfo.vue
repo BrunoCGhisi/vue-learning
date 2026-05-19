@@ -2,6 +2,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { Countries } from '@/models/Countries.js'
+import { autocompletePrimary } from '@/components/Commun/Vuetify/index.js'
 
 const props = defineProps(['titleCard', 'subtitleCard', 'description'])
 const optionsList = ref([])
@@ -61,9 +62,7 @@ async function handleSelect(item) {
     <v-card :title="props.titleCard" :subtitle="props.subtitleCard">
       <v-row class="ml-5 mt-5">
         <v-col cols="4">
-          <v-autocomplete
-            color="primary"
-            base-color="primary"
+          <autocompletePrimary
             label="Select country"
             :items="optionsList"
             v-model="selectedItem"
@@ -88,12 +87,6 @@ async function handleSelect(item) {
 </template>
 
 <style scoped>
-.card-title-result {
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #ffde00;
-}
-
 .card-text-result {
   font-size: 1rem;
 }

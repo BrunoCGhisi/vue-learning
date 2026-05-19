@@ -3,6 +3,12 @@ import axios from 'axios'
 const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currencies'
 
 export class Countries {
+  static findCountryByName(selectedName, data) {
+    return data.find(
+      (country) => country.name?.common?.toLowerCase() === selectedName.toLowerCase(),
+    )
+  }
+
   static async selectCountriesNames() {
     try {
       const { data } = await axios.get(baseUrl)

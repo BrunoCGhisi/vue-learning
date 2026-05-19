@@ -19,16 +19,22 @@ import { CountriesSectionBasicInfo, CountriesSectionCurrencyList } from './Secti
   />
 </template>
 
-<style scoped>
-:deep(.v-card-title) {
+<style>
+.v-card-title {
   color: #ffde00;
 }
 
-:deep(.v-card-subtitle) {
+.v-card-subtitle {
   color: #effb4b;
 }
 
-:deep(.v-select) {
+.card-title {
+  color: yellow;
+}
+
+.card-title-result {
+  font-size: 1.1rem;
+  font-weight: bold;
   color: #ffde00;
 }
 </style>
