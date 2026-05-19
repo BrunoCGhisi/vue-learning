@@ -1,5 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue'
+import axios from 'axios'
+import { Countries } from '@/models/Countries.js'
 
 const props = defineProps(['titleCard', 'subtitleCard', 'description'])
 const optionsList = ref([])
@@ -7,15 +9,50 @@ const cardList = ref([])
 
 const selectedItem = ref('')
 
+async function cardCountryBasicInfo(selectedItem) {
+  const baseUrl = 'https://restcountries.com/v3.1/all?fields=name,capital,currencies'
+  const { data } = await axios.get(baseUrl)
+
+  if (!data || data.length === 0) return 'Not found'
+
+  const country = Countries.findCountryByName(selectedItem, data)
+
+  let currencyCode = Object.keys(country.currencies)[0]
+  currencyCode = country.currencies[currencyCode]
+
+  if (!country) {
+    return []
+  }
+
+  return [
+    {
+      title: 'Official name:',
+      result: country.name?.official,
+    },
+    {
+      title: 'Capital:',
+      result: country.capital?.[0],
+    },
+    {
+      title: 'Currency name:',
+      result: currencyCode.name,
+    },
+    {
+      title: 'Currency symbol:',
+      result: currencyCode.symbol,
+    },
+  ]
+}
+
 onMounted(async () => {
-  optionsList.value = await props.selectMethodName()
+  optionsList.value = await Countries.SelectCountriesNames()
 })
 
 async function handleSelect(item) {
   console.log('Escolhi:' + item)
   if (!item) return
 
-  cardList.value = await props.cardMethodName(item)
+  cardList.value = await cardCountryBasicInfo(item)
 }
 </script>
 
