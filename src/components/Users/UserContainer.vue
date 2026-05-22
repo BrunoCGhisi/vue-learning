@@ -16,7 +16,9 @@ const addIsModalOpen = ref(false)
 <template>
   <div class="title-container">
     <h1>Controller Users</h1>
-    <ButtonContrast text="Register" @clicked="addIsModalOpen = true" />
+    <v-btn prepend-icon="$vuetify" variant="outlined" @click="addIsModalOpen = true">
+      Register
+    </v-btn>
     <ModalForm
       :show="addIsModalOpen"
       title="Configurações de Usuário"
