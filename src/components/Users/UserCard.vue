@@ -20,45 +20,35 @@ const onlineText = computed(() => {
 </script>
 
 <template>
-  <div class="card-title-section">
-    <span class="card-title-large"> {{ user.name }} </span>
-    <span class="card-title-desc" :style="{ color: ageColor }">
-      {{ user.age }}
-    </span>
-  </div>
-  <span class="text-status" :style="{ color: onlineColor }">
-    {{ onlineText }}
-  </span>
-  <span class="card-list-title"> Skills: </span>
-  <ul class="card-list-text">
-    <li v-for="(skill, index) in user.skills" :key="index">
-      {{ skill }}
-    </li>
-  </ul>
-  <CardButtons :user="user" />
+  <v-card>
+    <v-card-title class="d-flex justify-space-between align-center">
+      <span>{{ props.user.name }}</span>
+
+      <span :style="{ color: ageColor }"> {{ props.user.age }} </span>
+    </v-card-title>
+
+    <v-card-subtitle :style="{ color: onlineColor }">
+      {{ onlineText }}
+    </v-card-subtitle>
+
+    <v-card-text>
+      <div class="card-list-title">Skills:</div>
+
+      <ul class="card-list-text">
+        <li v-for="(skill, index) in props.user.skills" :key="index">
+          {{ skill }}
+        </li>
+      </ul>
+    </v-card-text>
+
+    <CardButtons :user="props.user" />
+  </v-card>
 </template>
 
 <style scoped>
-.text-status {
-  font-style: italic;
-  padding: 5px 00px 00px 00px;
-}
-
-.card-title-section {
-  display: flex;
-  font-weight: bold;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.card-title-large {
-  font-weight: bold;
-  font-size: x-large;
-}
-
-.card-title-desc {
-  font-style: italic;
-  font-size: medium;
+v-card {
+  width: 100%;
+  height: 500px;
 }
 
 .card-list-title {

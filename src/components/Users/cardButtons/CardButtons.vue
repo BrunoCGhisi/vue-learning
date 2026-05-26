@@ -7,6 +7,7 @@ import FormEditUser from '@/components/Users/cardButtons/Forms/FormEditUser.vue'
 const editIsModalOpen = ref(false)
 
 import { useUsers } from '@/composable/useUsers.js'
+import ButtonTonalPrimarySmall from '@/components/Commun/Vuetify/buttons/buttonTonalPrimarySmall.vue'
 const { deleteUser } = useUsers()
 
 function handleDelete() {
@@ -23,27 +24,26 @@ const onlineButtonText = computed(() => {
 </script>
 
 <template>
-  <div class="card-buttons">
-    <ButtonContrast :text="onlineButtonText" @clicked="user.changeStatus()" />
-    <ButtonContrast text="Editar" @clicked="editIsModalOpen = true" />
-    <ModalForm
-      :show="editIsModalOpen"
-      title="Configurações de Usuário"
-      @close="editIsModalOpen = false"
-    >
-      <FormEditUser :user="user" @close="editIsModalOpen = false" />
-    </ModalForm>
-    <ButtonContrast text="Deletar" @clicked="handleDelete" />
-  </div>
+  <v-container>
+    <v-row>
+      <v-col>
+        <button-tonal-primary-small :text="onlineButtonText" @click="user.changeStatus()" />
+      </v-col>
+      <v-col>
+        <button-tonal-primary-small text="Edit" @click="editIsModalOpen = true" />
+      </v-col>
+      <ModalForm
+        :show="editIsModalOpen"
+        title="Configurações de Usuário"
+        @close="editIsModalOpen = false"
+      >
+        <FormEditUser :user="user" @close="editIsModalOpen = false" />
+      </ModalForm>
+      <v-col>
+        <button-tonal-primary-small text="Delete" @click="handleDelete()" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
-<style scoped>
-.card-buttons {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin-top: auto;
-  gap: 00px 10px;
-  min-width: 222px;
-}
-</style>
+<style scoped></style>

@@ -27,7 +27,7 @@ async function handleSelect(item) {
 
 <template>
   <v-container>
-    <v-card :title="titleCard" :subtitle="subtitleCard">
+    <v-card :title="props.titleCard" :subtitle="props.subtitleCard">
       <v-row class="ml-5 mt-5">
         <v-col cols="4">
           <v-autocomplete

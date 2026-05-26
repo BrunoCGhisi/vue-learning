@@ -2,10 +2,9 @@
 import { ref } from 'vue'
 
 import UserCard from '@/components/Users/UserCard.vue'
-import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import ModalForm from '@/components/Commun/ModalForm.vue'
 import FormAddUser from '@/components/Users/cardButtons/Forms/FormAddUser.vue'
-import ButtonOutlinedIconPrimary from '@/components/Commun/Vuetify/buttonOutlinedIconPrimary.vue'
+import ButtonOutlinedPrimary from '@/components/Commun/Vuetify/buttons/buttonOutlinedPrimary.vue'
 
 defineProps({
   userList: Array,
@@ -17,9 +16,12 @@ const addIsModalOpen = ref(false)
 <template>
   <div class="title-container">
     <h1>Controller Users</h1>
-    <button-outlined-icon-primary @click="addIsModalOpen = true">
-      Register
-    </button-outlined-icon-primary>
+    <button-outlined-primary
+      prepend-icon="mdi-check-circle"
+      @click="addIsModalOpen = true"
+      text="Register"
+    />
+
     <ModalForm
       :show="addIsModalOpen"
       title="Configurações de Usuário"
@@ -29,9 +31,11 @@ const addIsModalOpen = ref(false)
     </ModalForm>
   </div>
   <div class="container-card">
-    <div class="card" v-for="(user, index) in userList" :key="index">
-      <user-card :user="user" />
-    </div>
+    <v-row>
+      <v-col v-for="(user, index) in userList" :key="index" cols="12" md="2" lg="3">
+        <user-card :user="user" />
+      </v-col>
+    </v-row>
   </div>
 </template>
 
