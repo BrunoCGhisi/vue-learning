@@ -5,6 +5,7 @@ import UserCard from '@/components/Users/UserCard.vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import ModalForm from '@/components/Commun/ModalForm.vue'
 import FormAddUser from '@/components/Users/cardButtons/Forms/FormAddUser.vue'
+import ButtonOutlinedIconPrimary from '@/components/Commun/Vuetify/buttonOutlinedIconPrimary.vue'
 
 defineProps({
   userList: Array,
@@ -16,9 +17,9 @@ const addIsModalOpen = ref(false)
 <template>
   <div class="title-container">
     <h1>Controller Users</h1>
-    <v-btn prepend-icon="$vuetify" variant="outlined" @click="addIsModalOpen = true">
+    <button-outlined-icon-primary @click="addIsModalOpen = true">
       Register
-    </v-btn>
+    </button-outlined-icon-primary>
     <ModalForm
       :show="addIsModalOpen"
       title="Configurações de Usuário"
