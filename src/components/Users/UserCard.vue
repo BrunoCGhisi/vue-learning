@@ -20,10 +20,9 @@ const onlineText = computed(() => {
 </script>
 
 <template>
-  <v-card>
+  <v-card class="user-card">
     <v-card-title class="d-flex justify-space-between align-center">
       <span>{{ props.user.name }}</span>
-
       <span :style="{ color: ageColor }"> {{ props.user.age }} </span>
     </v-card-title>
 
@@ -46,9 +45,13 @@ const onlineText = computed(() => {
 </template>
 
 <style scoped>
-v-card {
-  width: 100%;
-  height: 500px;
+.user-card {
+  min-width: 350px;
+  max-width: 400px;
+  min-height: 300px;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
 }
 
 .card-list-title {
