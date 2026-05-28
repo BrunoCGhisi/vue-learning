@@ -32,13 +32,13 @@ const onlineText = computed(() => {
     <v-card-text>
       <div class="card-list-title">Skills:</div>
 
-      <ul class="card-list-text">
+      <ul class="card-list-text" style="margin-bottom: 0">
         <li v-for="(skill, index) in props.user.skills" :key="index">
           {{ skill }}
         </li>
       </ul>
-      <CardButtons :user="props.user" />
     </v-card-text>
+    <CardButtons :user="props.user" />
   </v-card>
 </template>
 
@@ -58,8 +58,8 @@ const onlineText = computed(() => {
 }
 
 .card-list-text {
-  min-height: 50px;
-  max-height: 50px;
+  min-height: 60px;
+  max-height: 60px;
   overflow-y: auto;
 }
 

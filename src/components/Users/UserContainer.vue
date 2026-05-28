@@ -14,22 +14,27 @@ const addIsModalOpen = ref(false)
 </script>
 
 <template>
-  <div class="title-container">
-    <h1>Controller Users</h1>
-    <button-outlined-primary
-      prepend-icon="mdi-check-circle"
-      @click="addIsModalOpen = true"
-      text="Register"
-    />
+  <v-row align="center" class="mb-3 justify-space-between">
+    <v-col cols="auto">
+      <h1>Controller Users</h1>
+    </v-col>
 
-    <ModalForm
-      :show="addIsModalOpen"
-      title="Configurações de Usuário"
-      @close="addIsModalOpen = false"
-    >
-      <FormAddUser @close="addIsModalOpen = false" />
-    </ModalForm>
-  </div>
+    <v-col cols="auto">
+      <button-outlined-primary
+        prepend-icon="mdi-check-circle"
+        @click="addIsModalOpen = true"
+        text="Register"
+      />
+    </v-col>
+  </v-row>
+
+  <ModalForm
+    :show="addIsModalOpen"
+    title="Configurações de Usuário"
+    @close="addIsModalOpen = false"
+  >
+    <FormAddUser @close="addIsModalOpen = false" />
+  </ModalForm>
   <div class="container-card">
     <v-row justify="space-evenly">
       <v-col v-for="(user, index) in userList" :key="index" cols="12" sm="6" md="4" lg="3">
@@ -39,10 +44,4 @@ const addIsModalOpen = ref(false)
   </div>
 </template>
 
-<style scoped>
-.title-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-</style>
+<style scoped></style>
