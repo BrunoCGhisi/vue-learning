@@ -31,7 +31,7 @@ const addIsModalOpen = ref(false)
     </ModalForm>
   </div>
   <div class="container-card">
-    <v-row justify="center">
+    <v-row justify="space-evenly">
       <v-col v-for="(user, index) in userList" :key="index" cols="12" sm="6" md="4" lg="3">
         <user-card :user="user" />
       </v-col>

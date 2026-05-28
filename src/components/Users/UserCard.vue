@@ -37,16 +37,14 @@ const onlineText = computed(() => {
           {{ skill }}
         </li>
       </ul>
+      <CardButtons :user="props.user" />
     </v-card-text>
-
-    <CardButtons :user="props.user" />
   </v-card>
 </template>
 
 <style scoped>
 .user-card {
   width: 100%;
-  min-height: 300px;
 
   display: flex;
   flex-direction: column;
@@ -60,7 +58,8 @@ const onlineText = computed(() => {
 }
 
 .card-list-text {
-  max-height: 70px;
+  min-height: 50px;
+  max-height: 50px;
   overflow-y: auto;
 }
 
