@@ -25,7 +25,7 @@ const onlineButtonText = computed(() => {
 
 <template>
   <v-container>
-    <v-row>
+    <v-row justify="space-around" align="center" flex-wrap="flex-wrap">
       <v-col>
         <button-tonal-primary-small :text="onlineButtonText" @click="user.changeStatus()" />
       </v-col>

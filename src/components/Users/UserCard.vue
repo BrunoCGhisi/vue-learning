@@ -45,10 +45,9 @@ const onlineText = computed(() => {
 
 <style scoped>
 .user-card {
-  min-width: 350px;
-  max-width: 400px;
+  width: 100%;
   min-height: 300px;
-  max-height: 300px;
+
   display: flex;
   flex-direction: column;
 }
@@ -61,7 +60,7 @@ const onlineText = computed(() => {
 }
 
 .card-list-text {
-  max-height: 100px;
+  max-height: 70px;
   overflow-y: auto;
 }
 

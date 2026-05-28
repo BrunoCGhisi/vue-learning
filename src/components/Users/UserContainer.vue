@@ -31,8 +31,8 @@ const addIsModalOpen = ref(false)
     </ModalForm>
   </div>
   <div class="container-card">
-    <v-row justify="space-around" align="center">
-      <v-col v-for="(user, index) in userList" :key="index" cols="12" md="2" lg="3">
+    <v-row justify="center">
+      <v-col v-for="(user, index) in userList" :key="index" cols="12" sm="6" md="4" lg="3">
         <user-card :user="user" />
       </v-col>
     </v-row>
@@ -44,26 +44,5 @@ const addIsModalOpen = ref(false)
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.container-card {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  max-width: 100%;
-  gap: 2vh 00px;
-  justify-content: space-around;
-}
-
-.card {
-  display: flex;
-  background-color: #1f1f1f;
-  border-radius: 10px;
-  flex-direction: column;
-  min-width: 21%;
-  max-width: 21%;
-  min-height: 35vh;
-  max-height: 35vh;
-  padding: 15px;
 }
 </style>
