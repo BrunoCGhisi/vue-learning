@@ -33,7 +33,7 @@ function closeDialog() {
       </v-card-text>
       <v-card-actions>
         <v-row>
-          <v-col cols="9"> </v-col>
+          <v-col cols="9" />
           <v-col cols="1">
             <ButtonOutlinedPrimary variant="text" @click="closeDialog" text="Close" />
           </v-col>
