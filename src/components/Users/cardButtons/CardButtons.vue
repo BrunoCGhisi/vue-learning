@@ -39,8 +39,8 @@ function handleEditAction() {
       </v-col>
       <dialog-form-card
         v-model="dialogEditOpen"
-        title="Edit User"
-        subtitle="Editing the user data by forms"
+        title="Update User"
+        subtitle="Register the new user data in the fields"
         @actionButton="handleEditAction"
       >
         <form-edit-user ref="formEditRef" :user="user" @close="dialogEditOpen = false" />

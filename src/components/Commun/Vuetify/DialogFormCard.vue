@@ -1,5 +1,4 @@
 <script setup>
-import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import ButtonOutlinedPrimary from '@/components/Commun/Vuetify/buttons/ButtonOutlinedPrimary.vue'
 
 const props = defineProps({
@@ -39,7 +38,11 @@ function closeDialog() {
             <ButtonOutlinedPrimary variant="text" @click="closeDialog" text="Close" />
           </v-col>
           <v-col cols="2">
-            <ButtonOutlinedPrimary text="Edit" @click="$emit('actionButton')" />
+            <ButtonOutlinedPrimary
+              prepend-icon="mdi-pencil"
+              text="Update"
+              @click="$emit('actionButton')"
+            />
           </v-col>
         </v-row>
       </v-card-actions>
