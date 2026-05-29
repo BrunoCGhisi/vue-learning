@@ -20,7 +20,7 @@ const onlineText = computed(() => {
 </script>
 
 <template>
-  <v-card class="user-card" hover elevation="24">
+  <v-card class="user-card" elevation="24">
     <v-card-title class="d-flex justify-space-between align-center" :style="{ paddingBottom: 0 }">
       {{ props.user.name }}
       <span :style="{ color: ageColor }"> {{ props.user.age }} </span>

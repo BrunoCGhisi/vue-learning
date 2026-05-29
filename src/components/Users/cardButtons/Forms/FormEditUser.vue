@@ -40,6 +40,10 @@ function handleUserEdit() {
 
   emit('close')
 }
+
+defineExpose({
+  handleUserEdit,
+})
 </script>
 
 <template>
@@ -47,7 +51,6 @@ function handleUserEdit() {
     <input v-model="name" type="text" placeholder="User name" />
     <input v-model="age" type="number" placeholder="User age" />
     <input v-model="skills" type="text" placeholder="User skills" />
-    <ButtonContrast text="Edit" @clicked="handleUserEdit" />
   </div>
   <p v-if="name">
     Preview: Creating <strong>{{ name }}</strong>

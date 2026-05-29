@@ -1,13 +1,12 @@
 <script setup>
-import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
-import ModalForm from '@/components/Commun/ModalForm.vue'
 import { computed, ref } from 'vue'
-import FormEditUser from '@/components/Users/cardButtons/Forms/FormEditUser.vue'
 
-const editIsModalOpen = ref(false)
+const dialogEditOpen = ref(false)
 
 import { useUsers } from '@/composable/useUsers.js'
 import ButtonTonalPrimarySmall from '@/components/Commun/Vuetify/buttons/buttonTonalPrimarySmall.vue'
+import DialogFormCard from '@/components/Commun/Vuetify/DialogFormCard.vue'
+import FormEditUser from '@/components/Users/cardButtons/Forms/FormEditUser.vue'
 const { deleteUser } = useUsers()
 
 function handleDelete() {
@@ -21,24 +20,31 @@ const props = defineProps({
 const onlineButtonText = computed(() => {
   return props.user.isOn ? 'Logoff' : 'Login'
 })
+
+const formEditRef = ref(null)
+
+function handleEditAction() {
+  formEditRef.value.handleUserEdit()
+}
 </script>
 
 <template>
   <v-container>
     <v-row justify="space-around" align="center" flex-wrap="flex-wrap">
       <v-col>
-        <button-tonal-primary-small :text="onlineButtonText" @click="user.changeStatus()" />
+        <button-tonal-primary-small :text="onlineButtonText" @click="props.user.changeStatus()" />
       </v-col>
       <v-col>
-        <button-tonal-primary-small text="Edit" @click="editIsModalOpen = true" />
+        <button-tonal-primary-small text="Edit" @click="dialogEditOpen = true" />
       </v-col>
-      <ModalForm
-        :show="editIsModalOpen"
-        title="Configurações de Usuário"
-        @close="editIsModalOpen = false"
+      <dialog-form-card
+        v-model="dialogEditOpen"
+        title="Edit User"
+        subtitle="Editing the user data by forms"
+        @actionButton="handleEditAction"
       >
-        <FormEditUser :user="user" @close="editIsModalOpen = false" />
-      </ModalForm>
+        <form-edit-user ref="formEditRef" :user="user" @close="dialogEditOpen = false" />
+      </dialog-form-card>
       <v-col>
         <button-tonal-primary-small text="Delete" @click="handleDelete()" />
       </v-col>

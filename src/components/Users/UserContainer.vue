@@ -4,7 +4,7 @@ import { ref } from 'vue'
 import UserCard from '@/components/Users/UserCard.vue'
 import ModalForm from '@/components/Commun/ModalForm.vue'
 import FormAddUser from '@/components/Users/cardButtons/Forms/FormAddUser.vue'
-import ButtonOutlinedPrimary from '@/components/Commun/Vuetify/buttons/buttonOutlinedPrimary.vue'
+import ButtonOutlinedPrimary from '@/components/Commun/Vuetify/buttons/ButtonOutlinedPrimary.vue'
 
 defineProps({
   userList: Array,
