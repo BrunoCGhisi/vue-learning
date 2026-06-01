@@ -49,7 +49,7 @@ defineExpose({
   <v-container>
     <v-row>
       <v-col cols="6">
-        <TextFieldPrimary v-model="name" type="text" placeholder="User name" />
+        <TextFieldPrimary label="nome" v-model="name" type="text" placeholder="User name" />
       </v-col>
       <v-col cols="6"> <v-text-field v-model="age" type="number" placeholder="User age" /></v-col>
     </v-row>
