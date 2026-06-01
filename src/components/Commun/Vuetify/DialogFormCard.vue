@@ -16,7 +16,7 @@ function closeDialog() {
 
 <template>
   <v-dialog
-    width="1000"
+    width="800"
     :model-value="modelValue"
     persistent
     @update:modelValue="emit('update:modelValue', $event)"
@@ -32,19 +32,16 @@ function closeDialog() {
         <slot />
       </v-card-text>
       <v-card-actions>
-        <v-row>
-          <v-col cols="9" />
-          <v-col cols="1">
-            <ButtonOutlinedPrimary variant="text" @click="closeDialog" text="Close" />
-          </v-col>
-          <v-col cols="2">
-            <ButtonOutlinedPrimary
-              prepend-icon="mdi-pencil"
-              text="Update"
-              @click="$emit('actionButton')"
-            />
-          </v-col>
-        </v-row>
+        <v-spacer />
+
+        <ButtonOutlinedPrimary variant="text" @click="closeDialog" text="Close" />
+
+        <ButtonOutlinedPrimary
+          class="ml-3"
+          prepend-icon="mdi-pencil"
+          text="Update"
+          @click="$emit('actionButton')"
+        />
       </v-card-actions>
     </v-card>
   </v-dialog>

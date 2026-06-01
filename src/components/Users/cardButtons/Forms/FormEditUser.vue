@@ -47,14 +47,19 @@ defineExpose({
 </script>
 
 <template>
-  <div class="container-row">
-    <input v-model="name" type="text" placeholder="User name" />
-    <input v-model="age" type="number" placeholder="User age" />
-    <input v-model="skills" type="text" placeholder="User skills" />
-  </div>
-  <p v-if="name">
-    Preview: Creating <strong>{{ name }}</strong>
-  </p>
+  <v-container>
+    <v-row>
+      <v-col cols="6">
+        <v-text-field v-model="name" type="text" placeholder="User name" />
+      </v-col>
+      <v-col cols="6"> <v-text-field v-model="age" type="number" placeholder="User age" /></v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <v-text-field v-model="skills" type="text" placeholder="User skills" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <style scoped></style>
