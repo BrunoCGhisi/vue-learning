@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue'
 import axios from 'axios'
 import { Countries } from '@/models/Countries.js'
-import { autocompletePrimary } from '@/components/Commun/Vuetify/index.js'
+import { AutocompletePrimary } from '@/components/Commun/Vuetify/index.js'
 
 const props = defineProps(['titleCard', 'subtitleCard', 'description'])
 const optionsList = ref([])
@@ -47,7 +47,7 @@ async function handleSelect(item) {
     <v-card :title="props.titleCard" :subtitle="props.subtitleCard">
       <v-row class="ml-5 mt-5">
         <v-col cols="4">
-          <autocompletePrimary
+          <AutocompletePrimary
             color="primary"
             base-color="primary"
             label="Select country"

@@ -35,7 +35,6 @@ function closeDialog() {
         <v-spacer />
 
         <ButtonOutlinedPrimary variant="text" @click="closeDialog" text="Close" />
-
         <ButtonOutlinedPrimary
           class="ml-3"
           prepend-icon="mdi-pencil"

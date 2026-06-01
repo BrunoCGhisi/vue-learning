@@ -1,2 +1,2 @@
-export { default as autocompletePrimary } from './autocompletePrimary.vue'
-export { default as DividerLinePrimaryPrimary } from './dividerLinePrimary.vue'
+export { default as AutocompletePrimary } from './AutocompletePrimary.vue'
+export { default as DividerLinePrimaryPrimary } from './DividerLinePrimary.vue'

@@ -1,8 +1,7 @@
 <script setup>
-import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
-
 import { ref } from 'vue'
 import { useUsers } from '@/composable/useUsers.js'
+import TextFieldPrimary from '@/components/Commun/Vuetify/TextFieldPrimary.vue'
 const { editUser } = useUsers()
 
 const emit = defineEmits(['close'])
@@ -50,13 +49,13 @@ defineExpose({
   <v-container>
     <v-row>
       <v-col cols="6">
-        <v-text-field v-model="name" type="text" placeholder="User name" />
+        <TextFieldPrimary v-model="name" type="text" placeholder="User name" />
       </v-col>
       <v-col cols="6"> <v-text-field v-model="age" type="number" placeholder="User age" /></v-col>
     </v-row>
     <v-row>
       <v-col cols="12">
-        <v-text-field v-model="skills" type="text" placeholder="User skills" />
+        <TextFieldPrimary v-model="skills" type="text" placeholder="User skills" />
       </v-col>
     </v-row>
   </v-container>
