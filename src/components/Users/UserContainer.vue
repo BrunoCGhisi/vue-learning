@@ -2,15 +2,20 @@
 import { ref } from 'vue'
 
 import UserCard from '@/components/Users/UserCard.vue'
-import ModalForm from '@/components/Commun/ModalForm.vue'
-import FormAddUser from '@/components/Users/cardButtons/Forms/FormAddUser.vue'
 import ButtonOutlinedPrimary from '@/components/Commun/Vuetify/buttons/ButtonOutlinedPrimary.vue'
+import DialogFormCard from '@/components/Commun/Vuetify/DialogFormCard.vue'
+import FormAddUser from '@/components/Users/cardButtons/Forms/FormAddUser.vue'
 
 defineProps({
   userList: Array,
 })
 
-const addIsModalOpen = ref(false)
+const dialogAddOpen = ref(false)
+const formAddRef = ref(null)
+
+function handleAddAction() {
+  formAddRef.value.handleUserAdd()
+}
 </script>
 
 <template>
@@ -21,20 +26,24 @@ const addIsModalOpen = ref(false)
 
     <v-col cols="auto">
       <button-outlined-primary
-        prepend-icon="mdi-check-circle"
-        @click="addIsModalOpen = true"
-        text="Register"
+        prepend-icon="mdi-account-plus"
+        @click="dialogAddOpen = true"
+        text="Register User"
       />
     </v-col>
   </v-row>
 
-  <ModalForm
-    :show="addIsModalOpen"
-    title="Configurações de Usuário"
-    @close="addIsModalOpen = false"
+  <dialog-form-card
+    v-model="dialogAddOpen"
+    title="Add User"
+    subtitle="Register the new user data in the fields"
+    icon-action-button="
+mdi-check-circle"
+    text-action-button="Register"
+    @actionButton="handleAddAction"
   >
-    <FormAddUser @close="addIsModalOpen = false" />
-  </ModalForm>
+    <form-add-user ref="formAddRef" @close="dialogAddOpen = false" />
+  </dialog-form-card>
   <div class="container-card">
     <v-row justify="space-evenly">
       <v-col v-for="(user, index) in userList" :key="index" cols="12" sm="6" md="4" lg="3">

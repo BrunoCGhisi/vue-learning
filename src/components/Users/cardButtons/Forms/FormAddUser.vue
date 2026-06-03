@@ -1,9 +1,8 @@
 <script setup>
 import { ref } from 'vue'
 
-import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
-
 import { useUsers } from '@/composable/useUsers.js'
+import TextFieldPrimary from '@/components/Commun/Vuetify/TextFieldPrimary.vue'
 const { addUser } = useUsers()
 
 const emit = defineEmits(['close'])
@@ -36,18 +35,33 @@ function handleUserAdd() {
 
   emit('close')
 }
+defineExpose({
+  handleUserAdd,
+})
 </script>
 
 <template>
-  <div class="container-row">
-    <input v-model="name" type="text" placeholder="User name" />
-    <input v-model="age" type="number" placeholder="User age" />
-    <input v-model="skills" type="text" placeholder="User skills" />
-    <ButtonContrast text="Register" @clicked="handleUserAdd" />
-  </div>
-  <p v-if="name">
-    Preview: Creating <strong>{{ name }}</strong>
-  </p>
+  <v-container>
+    <v-row>
+      <v-col cols="6">
+        <TextFieldPrimary label="Name" v-model="name" type="text" placeholder="User name" />
+      </v-col>
+      <v-col cols="6">
+        <TextFieldPrimary label="Age" v-model.number="age" type="number" placeholder="User age" />
+      </v-col>
+    </v-row>
+    <v-row>
+      <v-col cols="12">
+        <TextFieldPrimary
+          label="Skills"
+          v-model="skills"
+          type="text"
+          placeholder="User skills"
+          hint="Use ' , ' to separe each skill"
+        />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <style scoped></style>

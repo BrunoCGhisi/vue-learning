@@ -40,7 +40,9 @@ function handleEditAction() {
       <dialog-form-card
         v-model="dialogEditOpen"
         title="Update User"
-        subtitle="Register the new user data in the fields"
+        subtitle="Update the new user data in the fields"
+        icon-action-button="mdi-pencil"
+        text-action-button="Update"
         @actionButton="handleEditAction"
       >
         <form-edit-user ref="formEditRef" :user="user" @close="dialogEditOpen = false" />

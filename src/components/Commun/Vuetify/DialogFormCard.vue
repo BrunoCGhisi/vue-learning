@@ -5,6 +5,8 @@ const props = defineProps({
   modelValue: Boolean,
   title: String,
   subtitle: String,
+  iconActionButton: String,
+  textActionButton: String,
 })
 
 const emit = defineEmits(['update:modelValue', 'actionButton'])
@@ -37,8 +39,8 @@ function closeDialog() {
         <ButtonOutlinedPrimary variant="text" @click="closeDialog" text="Close" />
         <ButtonOutlinedPrimary
           class="ml-3"
-          prepend-icon="mdi-pencil"
-          text="Update"
+          :prepend-icon="props.iconActionButton"
+          :text="props.textActionButton"
           @click="$emit('actionButton')"
         />
       </v-card-actions>

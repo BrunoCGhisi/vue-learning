@@ -49,15 +49,21 @@ defineExpose({
   <v-container>
     <v-row>
       <v-col cols="6">
-        <TextFieldPrimary label="nome" v-model="name" type="text" placeholder="User name" />
+        <TextFieldPrimary label="Name" v-model="name" type="text" placeholder="User name" />
       </v-col>
       <v-col cols="6">
-        <TextFieldPrimary label="age" v-model.number="age" type="number" placeholder="User age"
+        <TextFieldPrimary label="Age" v-model.number="age" type="number" placeholder="User age"
       /></v-col>
     </v-row>
     <v-row>
       <v-col cols="12">
-        <TextFieldPrimary v-model="skills" type="text" placeholder="User skills" />
+        <TextFieldPrimary
+          label="Skills"
+          v-model="skills"
+          type="text"
+          placeholder="User skills"
+          hint="Use ' , ' to separe each skill"
+        />
       </v-col>
     </v-row>
   </v-container>
