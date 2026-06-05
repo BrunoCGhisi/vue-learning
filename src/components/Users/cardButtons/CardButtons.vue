@@ -4,7 +4,7 @@ import { computed, ref } from 'vue'
 const dialogEditOpen = ref(false)
 
 import { useUsers } from '@/composable/useUsers.js'
-import ButtonTonalPrimarySmall from '@/components/Commun/Vuetify/buttons/buttonTonalPrimarySmall.vue'
+import ButtonTonalPrimarySmall from '@/components/Commun/Vuetify/buttons/ButtonTonalPrimarySmall.vue'
 import DialogFormCard from '@/components/Commun/Vuetify/DialogFormCard.vue'
 import FormEditUser from '@/components/Users/cardButtons/Forms/FormEditUser.vue'
 const { deleteUser } = useUsers()

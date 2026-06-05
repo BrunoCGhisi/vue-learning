@@ -21,7 +21,7 @@ function handleAddAction() {
 <template>
   <v-row align="center" class="mb-3 justify-space-between">
     <v-col cols="auto">
-      <h1>Controller Users</h1>
+      <h1>Controller users</h1>
     </v-col>
 
     <v-col cols="auto">
@@ -37,20 +37,17 @@ function handleAddAction() {
     v-model="dialogAddOpen"
     title="Add User"
     subtitle="Register the new user data in the fields"
-    icon-action-button="
-mdi-check-circle"
+    icon-action-button="mdi-check-circle"
     text-action-button="Register"
     @actionButton="handleAddAction"
   >
     <form-add-user ref="formAddRef" @close="dialogAddOpen = false" />
   </dialog-form-card>
-  <div class="container-card">
-    <v-row justify="space-evenly">
-      <v-col v-for="(user, index) in userList" :key="index" cols="12" sm="6" md="4" lg="3">
-        <user-card :user="user" />
-      </v-col>
-    </v-row>
-  </div>
+  <v-row justify="space-evenly">
+    <v-col v-for="(user, index) in userList" :key="index" cols="12" sm="6" md="4" lg="3">
+      <user-card :user="user" />
+    </v-col>
+  </v-row>
 </template>
 
 <style scoped></style>

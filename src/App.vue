@@ -2,7 +2,7 @@
 import UserContainer from '@/components/Users/UserContainer.vue'
 
 import { useUsers } from '@/composable/useUsers'
-import IbgeContainer from '@/components/IBGE/Ibge-container.vue'
+import IbgeContainer from '@/components/IBGE/IbgeContainer.vue'
 import CountriesContainer from '@/components/Countries/Countries-container.vue'
 import { DividerLinePrimaryPrimary } from '@/components/Commun/Vuetify/index.js'
 

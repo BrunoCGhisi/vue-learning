@@ -1,11 +1,17 @@
 <script setup>
-import IbgeSection from '@/components/IBGE/Ibge-section.vue'
+import IbgeSection from '@/components/IBGE/IbgeSection.vue'
+import ButtonOutlinedPrimary from '@/components/Commun/Vuetify/buttons/ButtonOutlinedPrimary.vue'
 </script>
 
 <template>
-  <div class="title-container">
-    <h1>IBGE Data Search</h1>
-  </div>
+  <v-row align="center" class="mb-3 justify-space-between">
+    <v-col cols="auto">
+      <h1>Ibge data search</h1>
+    </v-col>
+  </v-row>
+  <v-container>
+    <v-row align="center" justify="center"> </v-row>
+  </v-container>
   <div class="ibge-container">
     <IbgeSection title="Name Frequency" placeholderTextField="Ex: Bruno" methodName="findName" />
     <IbgeSection

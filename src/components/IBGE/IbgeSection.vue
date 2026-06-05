@@ -2,8 +2,10 @@
 import { ref } from 'vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import { Ibge } from '@/models/Ibge.js'
+import { TextFieldPrimary } from '@/components/Commun/Vuetify/index.js'
+import { ButtonTonalPrimary } from '@/components/Commun/Vuetify/buttons/index.js'
 
-const props = defineProps(['title', 'placeholderTextField', 'methodName'])
+const props = defineProps(['title', 'placeholderTextField', 'methodName', 'hintText', 'labelText'])
 
 const searchTerm = ref('')
 const result = ref('')
@@ -33,6 +35,28 @@ async function handleSearch() {
 </script>
 
 <template>
+  <v-card>
+    <v-card-title> {{ props.title }} </v-card-title>
+    <v-card-text>
+      <v-container>
+        <v-row>
+          <v-col>
+            <textFieldPrimary
+              type="text"
+              :label="props.labelText"
+              :v-model="props.searchTerm"
+              :placeholder="props.placeholderTextField"
+              :hint="props.hintText"
+              @keyup.enter="handleSearch"
+            />
+          </v-col>
+          <v-col>
+            <button-tonal-primary text="aaaaa"> </button-tonal-primary>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-card-text>
+  </v-card>
   <div class="ibge-section">
     <div class="section-title">{{ title }}</div>
 
