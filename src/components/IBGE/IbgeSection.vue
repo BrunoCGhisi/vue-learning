@@ -3,7 +3,11 @@ import { ref } from 'vue'
 import ButtonContrast from '@/components/Commun/ButtonContrast.vue'
 import { Ibge } from '@/models/Ibge.js'
 import { TextFieldPrimary } from '@/components/Commun/Vuetify/index.js'
-import { ButtonTonalPrimary } from '@/components/Commun/Vuetify/buttons/index.js'
+import {
+  ButtonDefaultPrimary,
+  ButtonOutlinedPrimary,
+  ButtonTonalPrimary,
+} from '@/components/Commun/Vuetify/buttons/index.js'
 
 const props = defineProps(['title', 'placeholderTextField', 'methodName', 'hintText', 'labelText'])
 
@@ -42,6 +46,7 @@ async function handleSearch() {
         <v-row>
           <v-col>
             <textFieldPrimary
+              width="300px"
               type="text"
               :label="props.labelText"
               :v-model="props.searchTerm"
@@ -51,7 +56,7 @@ async function handleSearch() {
             />
           </v-col>
           <v-col>
-            <button-tonal-primary text="aaaaa"> </button-tonal-primary>
+            <button-default-primary text="Search"> </button-default-primary>
           </v-col>
         </v-row>
       </v-container>

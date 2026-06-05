@@ -16,7 +16,10 @@ import ButtonOutlinedPrimary from '@/components/Commun/Vuetify/buttons/ButtonOut
     <IbgeSection title="Name Frequency" placeholderTextField="Ex: Bruno" methodName="findName" />
     <IbgeSection
       title="Cities by Region in Brazil"
-      placeholderTextField="Ex: Sul (Sc, Pr, Rs)"
+      labelText="aaa"
+      searchTerm="searchTerm"
+      placeholderTextField="placeHolder"
+      hintText="hintText"
       methodName="findCitiesPerRegion"
     />
     <IbgeSection
